@@ -302,16 +302,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
       style: {
         backgroundColor: backgroundColor
       }
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('High Contrast', 'jsforwpblocks')
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
-      htmlFor: "high-contrast-form-toggle"
-    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('High Contrast', 'jsforwpblocks')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["FormToggle"], {
-      id: "high-contrast-form-toggle",
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('High Contrast', 'jsforwpblocks'),
-      checked: highContrast,
-      onChange: toggleHighContrast
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["PanelColorSettings"], {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["PanelColorSettings"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Color settings'),
       initialOpen: false,
       colorSettings: [{
@@ -413,8 +404,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
    */
   save: function save(props) {
     var _props$attributes2 = props.attributes,
-        textAlignment = _props$attributes2.textAlignment,
-        highContrast = _props$attributes2.highContrast,
+        testimonialContent = _props$attributes2.testimonialContent,
+        backgroundColor = _props$attributes2.backgroundColor,
+        textColor = _props$attributes2.textColor,
+        alignment = _props$attributes2.alignment,
         className = props.className;
 
     var testimonialImage = function testimonialImage(src, alt) {
@@ -446,7 +439,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
       className: "bk-testimonial-content",
       style: {
-        textAlign: textAlignment
+        textAlign: alignment
       }
     }, props.attributes.testimonialContent), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
       className: "bk-testimonial-author"

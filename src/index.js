@@ -232,24 +232,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 			>
 				{
 					<InspectorControls>
-						<PanelBody
-							title={ __( 'High Contrast', 'jsforwpblocks' ) }
-						>
-							<PanelRow>
-								<label
-									htmlFor="high-contrast-form-toggle"
-								>
-									{ __( 'High Contrast', 'jsforwpblocks' ) }
-								</label>
-								<FormToggle
-									id="high-contrast-form-toggle"
-									label={ __( 'High Contrast', 'jsforwpblocks' ) }
-									checked={ highContrast }
-									onChange={ toggleHighContrast }
-								/>
-							</PanelRow>
-						</PanelBody>
-
 						<PanelColorSettings
 							title={ __( 'Color settings' ) }
 							initialOpen={ false }
@@ -362,8 +344,10 @@ registerBlockType( 'oleti/bk-testimonial', {
 
 		const {
 			attributes: {
-				textAlignment,
-				highContrast
+				testimonialContent,
+				backgroundColor,
+				textColor,
+				alignment
 			},
 			className,
 		} = props;
@@ -403,7 +387,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 				<blockquote className="bk-testimonial-blockquote">
 					<span
 						className="bk-testimonial-content"
-						style={ { textAlign: textAlignment } }
+						style={ { textAlign: alignment } }
 					>
 						{ props.attributes.testimonialContent }
 					</span>
