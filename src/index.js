@@ -13,6 +13,47 @@ import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 /**
+ * WordPress dependencies
+ */
+import {
+	RichText,
+	MediaUpload,
+	MediaUploadCheck,
+	BlockControls,
+	AlignmentToolbar,
+	PanelColorSettings,
+	BlockVerticalAlignmentToolbar,
+	MediaPlaceholder,
+	MediaReplaceFlow,
+	withColors,
+	FontSizePicker,
+	withFontSizes,
+	__experimentalUseColors,
+	InspectorControls,
+} from '@wordpress/editor';
+
+import {
+	Button,
+	PanelBody,
+	PanelRow,
+	FormToggle,
+	TextControl,
+	ToggleControl,
+	ToolbarGroup,
+	ExternalLink,
+	FocalPointPicker,
+	RangeControl,
+	SelectControl,
+	ColorPalette
+} from '@wordpress/components';
+
+//const { InspectorControls } = wp.editor;
+//import { InspectorControls } from '@wordpress/block-editor';
+//import { InspectorControls } from '@wordpress/block-editor';
+//import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+
+
+/**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
@@ -34,7 +75,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 * Blocks are grouped into categories to help users browse and discover them.
 	 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
 	 */
-	category: 'formatting',
+	category: 'common',
 
 	/**
 	 * An icon property should be specified to make it easier to identify a block.
@@ -42,10 +83,89 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 */
 	icon: 'testimonial',
 
+	// Make it easier to discover a block with keyword aliases.
+	// These can be localised so your keywords work across locales.
+	keywords: [ __( 'testimonial' ), __( 'quotes' ) ],
+
+	// Register block styles.
+	styles: [
+		// Mark style as default.
+		{
+			name: 'default',
+			label: __( 'Image on Left' ),
+			isDefault: true,
+		},
+		{
+			name: 'image-on-left',
+			label: __( 'Image on Right' ),
+		},
+		{
+			name: 'image-on-top',
+			label: __( 'Image on Top' ),
+		},
+	],
+
+	// Specifying block attributes
+	attributes: {
+		imageAlt: {
+			attribute: 'alt',
+			selector: '.bk-testimonial-image',
+		},
+		imageUrl: {
+			attribute: 'src',
+			selector: '.bk-testimonial-image',
+		},
+		testimonialContent: {
+			type: 'array',
+			source: 'children',
+			selector: '.bk-testimonial-content',
+		},
+		testimonialAuthor: {
+			type: 'array',
+			source: 'children',
+			selector: '.bk-testimonial-author',
+		},
+		testimonialRole: {
+			type: 'array',
+			source: 'children',
+			selector: '.bk-testimonial-role',
+		},
+		textAlignment: {
+			type: 'string',
+		},
+		verticalAlignment: {
+			type: 'string',
+		},
+		backgroundColor: {
+			type: 'string',
+			default: '#000000'
+		},
+		textColor: {
+			type: 'string',
+			default: '#ffffff'
+		},
+		testimonialFontSize: {
+			type: 'number',
+			default: 18
+		},
+		highContrast: {
+                type: 'boolean',
+                default: false,
+            },
+	},
+
 	/**
 	 * Optional block extended support features.
 	 */
 	supports: {
+		// Add the support for block's alignment (left, center, right, wide, full).
+		align: true,
+		// Pick which alignment options to display ('left', 'right', 'center', 'wide','full').
+		align: [ 'wide','full' ],
+		// Add the support for an anchor link.
+		anchor: true,
+		// Remove the support for the generated className.
+		//className: false,
 		// Removes support for an HTML mode.
 		html: false,
 	},
@@ -60,11 +180,160 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 *
 	 * @return {WPElement} Element to render.
 	 */
-	edit( { className } ) {
+	edit: ( { attributes, setAttributes, PanelColorSettings } ) => {
+
+		// Simplify access to attributes
+		const {
+			imageAlt,
+			imageUrl,
+			testimonialContent,
+			testimonialAuthor,
+			testimonialRole,
+			textAlignment,
+			verticalAlignment,
+			backgroundColor,
+			textColor,
+			testimonialFontSize,
+			highContrast
+		} = attributes;
+
+
+		const getImageButton = ( openEvent ) => {
+			if ( attributes.imageUrl ) {
+				return (
+					<figure className="wp-block-oleti-bk-testimonial__media">
+						<img
+							src={ attributes.imageUrl }
+							onClick={ openEvent }
+							className="bk-testimonial-image"
+						/>
+					</figure>
+				);
+			} else {
+				return (
+					<div className="wp-block-oleti-bk-testimonial__button">
+						<Button
+							onClick={ openEvent }
+							className="button button-large"
+						>
+							Add Image
+						</Button>
+					</div>
+				);
+			}
+		};
+
+		// Toggle a setting when the user clicks the button
+		//const toggleSetting = () => setAttributes( { mySetting: ! mySetting } );
+        const toggleHighContrast = () => setAttributes( { highContrast: ! highContrast } );
+
+
+		//function toggleHighContrast( newValue ) {
+		//	setAttributes( { highContrast: newValue } );
+		//}
+
 		return (
-			<p className={ className }>
-				{ __( 'Testimonial Block – hello from the editor!', 'oleti' ) }
-			</p>
+
+			<InspectorControls>
+
+				<PanelBody
+                        title={ __( 'High Contrast', 'jsforwpblocks' ) }
+                    >
+                        <PanelRow>
+                            <label
+                                htmlFor="high-contrast-form-toggle"
+                            >
+                                { __( 'High Contrast', 'jsforwpblocks' ) }
+                            </label>
+                            <FormToggle
+                                id="high-contrast-form-toggle"
+                                label={ __( 'High Contrast', 'jsforwpblocks' ) }
+                                checked={ highContrast }
+                                onChange={ toggleHighContrast }
+                            />
+                        </PanelRow>
+                    </PanelBody>
+
+				<ToggleControl
+					label="Toggle Field"
+					checked={ highContrast }
+                    onChange={ toggleHighContrast }
+				/>
+            </InspectorControls>,
+
+			<BlockControls>
+				<AlignmentToolbar
+					value={ textAlignment }
+					onChange={ ( textAlignment ) => setAttributes( { textAlignment } ) }
+				/>
+			</BlockControls>,
+
+			<div
+				className="bk-testimonial"
+				style={ {
+					backgroundColor: backgroundColor,
+				} }
+			>
+				<MediaUpload
+					onSelect={ ( media ) => {
+						setAttributes( {
+							imageAlt: media.alt,
+							imageUrl: media.url,
+						} );
+					} }
+					type="image"
+					value={ attributes.imageID }
+					render={ ( { open } ) => getImageButton( open ) }
+				/>
+				<blockquote className="bk-testimonial-blockquote">
+					<RichText
+						onChange={ ( testimonialContent ) =>
+							setAttributes( { testimonialContent } )
+						}
+						value={ attributes.testimonialContent }
+						multiline="p"
+						placeholder="Testimonial Content"
+						formattingControls={ [] }
+						isSelected={ attributes.isSelected }
+						style={ {
+							textAlign: textAlignment,
+							color: textColor
+						} }
+						className="bk-testimonial-content"
+						tagName="span"
+					/>
+
+					<footer>
+						<RichText
+							onChange={ ( testimonialAuthor ) =>
+								setAttributes( { testimonialAuthor } )
+							}
+							value={ attributes.testimonialAuthor }
+							//multiline="p"
+							placeholder="Name"
+							formattingControls={ [] }
+							isSelected={ attributes.isSelected }
+							style={ { textAlign: textAlignment } }
+							className="bk-testimonial-author"
+							tagName="h2"
+						/>
+						<RichText
+							onChange={ ( testimonialRole ) =>
+								setAttributes( { testimonialRole } )
+							}
+							value={ attributes.testimonialRole }
+							//multiline="p"
+							placeholder="Role, Company"
+							formattingControls={ [] }
+							isSelected={ attributes.isSelected }
+							style={ { textAlign: textAlignment } }
+							className="bk-testimonial-role"
+							tagName="cite"
+						/>
+					</footer>
+				</blockquote>
+			</div>
+
 		);
 	},
 
@@ -76,14 +345,58 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 *
 	 * @return {WPElement} Element to render.
 	 */
-	save() {
+	save: ( { attributes, textAlignment, BackgroundColor, TextColor } ) => {
+
+		const testimonialImage = ( src, alt ) => {
+			if ( ! src ) return null;
+
+			if ( alt ) {
+				return (
+					<img
+						className="bk-testimonial-image"
+						src={ src }
+						alt={ alt }
+					/>
+				);
+			}
+
+			// No alt set, so let's hide it from screen readers
+			return (
+				<img
+					className="bk-testimonial-image"
+					src={ src }
+					alt=""
+					aria-hidden="true"
+				/>
+			);
+		};
+
 		return (
-			<p>
-				{ __(
-					'Testimonial Block – hello from the saved content!',
-					'oleti'
-				) }
-			</p>
+			<div className="bk-testimonial">
+				<figure className="wp-block-oleti-bk-testimonial__media">
+					{ testimonialImage(
+						attributes.imageUrl,
+						attributes.imageAlt
+					) }
+				</figure>
+				<blockquote className="bk-testimonial-blockquote">
+					<span
+						className="bk-testimonial-content"
+						style={ { textAlign: textAlignment } }
+					>
+						{ attributes.testimonialContent }
+					</span>
+
+					<footer>
+						<h2 className="bk-testimonial-author">
+							{ attributes.testimonialAuthor }
+						</h2>
+						<cite className="bk-testimonial-role">
+							{ attributes.testimonialRole }
+						</cite>
+					</footer>
+				</blockquote>
+			</div>
 		);
 	},
 } );
