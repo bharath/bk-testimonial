@@ -209,11 +209,11 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
     },
     backgroundColor: {
       type: 'string',
-      default: '#000000'
+      default: '#ffffff'
     },
     textColor: {
       type: 'string',
-      default: '#ffffff'
+      default: '#000000'
     },
     testimonialFontSize: {
       type: 'number',
@@ -251,28 +251,34 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
    *
    * @return {WPElement} Element to render.
    */
-  edit: function edit(_ref) {
-    var attributes = _ref.attributes,
-        setAttributes = _ref.setAttributes;
-    // Simplify access to attributes
-    var imageAlt = attributes.imageAlt,
-        imageUrl = attributes.imageUrl,
-        testimonialContent = attributes.testimonialContent,
-        testimonialAuthor = attributes.testimonialAuthor,
-        testimonialRole = attributes.testimonialRole,
-        textAlignment = attributes.textAlignment,
-        verticalAlignment = attributes.verticalAlignment,
-        backgroundColor = attributes.backgroundColor,
-        textColor = attributes.textColor,
-        testimonialFontSize = attributes.testimonialFontSize,
-        highContrast = attributes.highContrast;
+  edit: function edit(props) {
+    var _props$attributes = props.attributes,
+        testimonialContent = _props$attributes.testimonialContent,
+        textAlignment = _props$attributes.textAlignment,
+        backgroundColor = _props$attributes.backgroundColor,
+        textColor = _props$attributes.textColor,
+        highContrast = _props$attributes.highContrast,
+        alignment = _props$attributes.alignment,
+        className = props.className;
+
+    var toggleHighContrast = function toggleHighContrast() {
+      return props.setAttributes({
+        highContrast: !highContrast
+      });
+    };
+
+    var onChangeAlignment = function onChangeAlignment(newAlignment) {
+      props.setAttributes({
+        alignment: newAlignment === undefined ? 'none' : newAlignment
+      });
+    };
 
     var getImageButton = function getImageButton(openEvent) {
-      if (attributes.imageUrl) {
+      if (props.attributes.imageUrl) {
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
           className: "wp-block-oleti-bk-testimonial__media"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-          src: attributes.imageUrl,
+          src: props.attributes.imageUrl,
           onClick: openEvent,
           className: "bk-testimonial-image"
         }));
@@ -286,44 +292,49 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
       }
     }; // Toggle a setting when the user clicks the button
     //const toggleSetting = () => setAttributes( { mySetting: ! mySetting } );
-
-
-    var toggleHighContrast = function toggleHighContrast() {
-      return setAttributes({
-        highContrast: !highContrast
-      });
-    }; //function toggleHighContrast( newValue ) {
+    //function toggleHighContrast( newValue ) {
     //	setAttributes( { highContrast: newValue } );
     //}
 
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Testimonial settings')
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Stack on mobile'),
-      checked: highContrast,
-      onChange: function onChange() {
-        return setAttributes({
-          isStackedOnMobile: !isStackedOnMobile
-        });
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
-      label: "Toggle Field",
-      checked: highContrast,
-      onChange: toggleHighContrast
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["AlignmentToolbar"], {
-      value: textAlignment,
-      onChange: function onChange(textAlignment) {
-        return setAttributes({
-          textAlignment: textAlignment
-        });
-      }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "bk-testimonial",
       style: {
         backgroundColor: backgroundColor
       }
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["MediaUpload"], {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('High Contrast', 'jsforwpblocks')
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", {
+      htmlFor: "high-contrast-form-toggle"
+    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('High Contrast', 'jsforwpblocks')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["FormToggle"], {
+      id: "high-contrast-form-toggle",
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('High Contrast', 'jsforwpblocks'),
+      checked: highContrast,
+      onChange: toggleHighContrast
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["PanelColorSettings"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Color settings'),
+      initialOpen: false,
+      colorSettings: [{
+        value: backgroundColor,
+        onChange: function onChange(backgroundColor) {
+          props.setAttributes({
+            backgroundColor: backgroundColor
+          });
+        },
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Background color')
+      }, {
+        value: textColor,
+        onChange: function onChange(textColor) {
+          props.setAttributes({
+            textColor: textColor
+          });
+        },
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Text color')
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["AlignmentToolbar"], {
+      value: alignment,
+      onChange: onChangeAlignment
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["MediaUpload"], {
       onSelect: function onSelect(media) {
         setAttributes({
           imageAlt: media.alt,
@@ -331,9 +342,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
         });
       },
       type: "image",
-      value: attributes.imageID,
-      render: function render(_ref2) {
-        var open = _ref2.open;
+      value: props.attributes.imageID,
+      render: function render(_ref) {
+        var open = _ref.open;
         return getImageButton(open);
       }
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("blockquote", {
@@ -344,13 +355,13 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
           testimonialContent: testimonialContent
         });
       },
-      value: attributes.testimonialContent,
+      value: testimonialContent,
       multiline: "p",
       placeholder: "Testimonial Content",
       formattingControls: [] //isSelected={ attributes.isSelected }
       ,
       style: {
-        textAlign: textAlignment,
+        textAlign: alignment,
         color: textColor
       },
       className: "bk-testimonial-content",
@@ -361,13 +372,13 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
           testimonialAuthor: testimonialAuthor
         });
       },
-      value: attributes.testimonialAuthor //multiline="p"
+      value: props.attributes.testimonialAuthor //multiline="p"
       ,
       placeholder: "Name",
       formattingControls: [] //isSelected={ attributes.isSelected }
       ,
       style: {
-        textAlign: textAlignment,
+        textAlign: alignment,
         color: textColor
       },
       className: "bk-testimonial-author",
@@ -378,13 +389,13 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
           testimonialRole: testimonialRole
         });
       },
-      value: attributes.testimonialRole //multiline="p"
+      value: props.attributes.testimonialRole //multiline="p"
       ,
       placeholder: "Role, Company",
       formattingControls: [] //isSelected={ attributes.isSelected }
       ,
       style: {
-        textAlign: textAlignment,
+        textAlign: alignment,
         color: textColor
       },
       className: "bk-testimonial-role",
@@ -400,11 +411,11 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
    *
    * @return {WPElement} Element to render.
    */
-  save: function save(_ref3) {
-    var attributes = _ref3.attributes,
-        textAlignment = _ref3.textAlignment,
-        BackgroundColor = _ref3.BackgroundColor,
-        TextColor = _ref3.TextColor;
+  save: function save(props) {
+    var _props$attributes2 = props.attributes,
+        textAlignment = _props$attributes2.textAlignment,
+        highContrast = _props$attributes2.highContrast,
+        className = props.className;
 
     var testimonialImage = function testimonialImage(src, alt) {
       if (!src) return null;
@@ -430,18 +441,18 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('ole
       className: "bk-testimonial"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
       className: "wp-block-oleti-bk-testimonial__media"
-    }, testimonialImage(attributes.imageUrl, attributes.imageAlt)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("blockquote", {
+    }, testimonialImage(props.attributes.imageUrl, props.attributes.imageAlt)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("blockquote", {
       className: "bk-testimonial-blockquote"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
       className: "bk-testimonial-content",
       style: {
         textAlign: textAlignment
       }
-    }, attributes.testimonialContent), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+    }, props.attributes.testimonialContent), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
       className: "bk-testimonial-author"
-    }, attributes.testimonialAuthor), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("cite", {
+    }, props.attributes.testimonialAuthor), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("cite", {
       className: "bk-testimonial-role"
-    }, attributes.testimonialRole))));
+    }, props.attributes.testimonialRole))));
   }
 });
 

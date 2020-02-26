@@ -127,11 +127,11 @@ registerBlockType( 'oleti/bk-testimonial', {
 		},
 		backgroundColor: {
 			type: 'string',
-			default: '#000000',
+			default: '#ffffff',
 		},
 		textColor: {
 			type: 'string',
-			default: '#ffffff',
+			default: '#000000',
 		},
 		testimonialFontSize: {
 			type: 'number',
@@ -169,30 +169,33 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 *
 	 * @return {WPElement} Element to render.
 	 */
-	edit: ( { attributes, setAttributes } ) => {
-
-		// Simplify access to attributes
+	edit: ( props ) => {
 		const {
-			imageAlt,
-			imageUrl,
-			testimonialContent,
-			testimonialAuthor,
-			testimonialRole,
-			textAlignment,
-			verticalAlignment,
-			backgroundColor,
-			textColor,
-			testimonialFontSize,
-			highContrast
-		} = attributes;
+			attributes: {
+				testimonialContent,
+				textAlignment,
+				backgroundColor,
+				textColor,
+				highContrast,
+				alignment,
+			},
+			className,
+		} = props;
 
+		const toggleHighContrast = () => props.setAttributes( { highContrast: ! highContrast } );
+
+		const onChangeAlignment = ( newAlignment ) => {
+			props.setAttributes( {
+				alignment: newAlignment === undefined ? 'none' : newAlignment,
+			} );
+		};
 
 		const getImageButton = ( openEvent ) => {
-			if ( attributes.imageUrl ) {
+			if ( props.attributes.imageUrl ) {
 				return (
 					<figure className="wp-block-oleti-bk-testimonial__media">
 						<img
-							src={ attributes.imageUrl }
+							src={ props.attributes.imageUrl }
 							onClick={ openEvent }
 							className="bk-testimonial-image"
 						/>
@@ -214,40 +217,12 @@ registerBlockType( 'oleti/bk-testimonial', {
 
 		// Toggle a setting when the user clicks the button
 		//const toggleSetting = () => setAttributes( { mySetting: ! mySetting } );
-        const toggleHighContrast = () => setAttributes( { highContrast: ! highContrast } );
-
-
 		//function toggleHighContrast( newValue ) {
 		//	setAttributes( { highContrast: newValue } );
 		//}
 
+
 		return (
-
-			<InspectorControls>
-				<PanelBody title={ __( 'Testimonial settings' ) }>
-					<ToggleControl
-						label={ __( 'Stack on mobile' ) }
-						checked={ highContrast }
-						onChange={ () =>
-							setAttributes( {
-								isStackedOnMobile: ! isStackedOnMobile,
-							} )
-						}
-					/>
-					<ToggleControl
-						label="Toggle Field"
-						checked={ highContrast }
-						onChange={ toggleHighContrast }
-					/>
-				</PanelBody>
-			</InspectorControls>,
-
-			<BlockControls>
-				<AlignmentToolbar
-					value={ textAlignment }
-					onChange={ ( textAlignment ) => setAttributes( { textAlignment } ) }
-				/>
-			</BlockControls>,
 
 			<div
 				className="bk-testimonial"
@@ -255,6 +230,57 @@ registerBlockType( 'oleti/bk-testimonial', {
 					backgroundColor: backgroundColor,
 				} }
 			>
+				{
+					<InspectorControls>
+						<PanelBody
+							title={ __( 'High Contrast', 'jsforwpblocks' ) }
+						>
+							<PanelRow>
+								<label
+									htmlFor="high-contrast-form-toggle"
+								>
+									{ __( 'High Contrast', 'jsforwpblocks' ) }
+								</label>
+								<FormToggle
+									id="high-contrast-form-toggle"
+									label={ __( 'High Contrast', 'jsforwpblocks' ) }
+									checked={ highContrast }
+									onChange={ toggleHighContrast }
+								/>
+							</PanelRow>
+						</PanelBody>
+
+						<PanelColorSettings
+							title={ __( 'Color settings' ) }
+							initialOpen={ false }
+							colorSettings={[
+								{
+									value: backgroundColor,
+									onChange: backgroundColor => {
+										props.setAttributes({ backgroundColor });
+									},
+									label: __( 'Background color' ),
+								},
+								{
+									value: textColor,
+									onChange: textColor => {
+										props.setAttributes({ textColor });
+									},
+									label: __( 'Text color' ),
+								},
+							]}
+						/>
+					</InspectorControls>
+				}
+				{
+					<BlockControls>
+						<AlignmentToolbar
+							value={ alignment }
+							onChange={ onChangeAlignment }
+						/>
+					</BlockControls>
+				}
+
 				<MediaUpload
 					onSelect={ ( media ) => {
 						setAttributes( {
@@ -263,7 +289,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 						} );
 					} }
 					type="image"
-					value={ attributes.imageID }
+					value={ props.attributes.imageID }
 					render={ ( { open } ) => getImageButton( open ) }
 				/>
 				<blockquote className="bk-testimonial-blockquote">
@@ -271,13 +297,13 @@ registerBlockType( 'oleti/bk-testimonial', {
 						onChange={ ( testimonialContent ) =>
 							setAttributes( { testimonialContent } )
 						}
-						value={ attributes.testimonialContent }
+						value={ testimonialContent }
 						multiline="p"
 						placeholder="Testimonial Content"
 						formattingControls={ [] }
 						//isSelected={ attributes.isSelected }
 						style={ {
-							textAlign: textAlignment,
+							textAlign: alignment,
 							color: textColor
 						} }
 						className="bk-testimonial-content"
@@ -289,13 +315,13 @@ registerBlockType( 'oleti/bk-testimonial', {
 							onChange={ ( testimonialAuthor ) =>
 								setAttributes( { testimonialAuthor } )
 							}
-							value={ attributes.testimonialAuthor }
+							value={ props.attributes.testimonialAuthor }
 							//multiline="p"
 							placeholder="Name"
 							formattingControls={ [] }
 							//isSelected={ attributes.isSelected }
 							style={ {
-								textAlign: textAlignment,
+								textAlign: alignment,
 								color: textColor
 							} }
 							className="bk-testimonial-author"
@@ -305,13 +331,13 @@ registerBlockType( 'oleti/bk-testimonial', {
 							onChange={ ( testimonialRole ) =>
 								setAttributes( { testimonialRole } )
 							}
-							value={ attributes.testimonialRole }
+							value={ props.attributes.testimonialRole }
 							//multiline="p"
 							placeholder="Role, Company"
 							formattingControls={ [] }
 							//isSelected={ attributes.isSelected }
 							style={ {
-								textAlign: textAlignment,
+								textAlign: alignment,
 								color: textColor
 							} }
 							className="bk-testimonial-role"
@@ -332,7 +358,15 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 *
 	 * @return {WPElement} Element to render.
 	 */
-	save: ( { attributes, textAlignment, BackgroundColor, TextColor } ) => {
+	save: ( props ) => {
+
+		const {
+			attributes: {
+				textAlignment,
+				highContrast
+			},
+			className,
+		} = props;
 
 		const testimonialImage = ( src, alt ) => {
 			if ( ! src ) return null;
@@ -362,8 +396,8 @@ registerBlockType( 'oleti/bk-testimonial', {
 			<div className="bk-testimonial">
 				<figure className="wp-block-oleti-bk-testimonial__media">
 					{ testimonialImage(
-						attributes.imageUrl,
-						attributes.imageAlt
+						props.attributes.imageUrl,
+						props.attributes.imageAlt
 					) }
 				</figure>
 				<blockquote className="bk-testimonial-blockquote">
@@ -371,15 +405,15 @@ registerBlockType( 'oleti/bk-testimonial', {
 						className="bk-testimonial-content"
 						style={ { textAlign: textAlignment } }
 					>
-						{ attributes.testimonialContent }
+						{ props.attributes.testimonialContent }
 					</span>
 
 					<footer>
 						<h2 className="bk-testimonial-author">
-							{ attributes.testimonialAuthor }
+							{ props.attributes.testimonialAuthor }
 						</h2>
 						<cite className="bk-testimonial-role">
-							{ attributes.testimonialRole }
+							{ props.attributes.testimonialRole }
 						</cite>
 					</footer>
 				</blockquote>
