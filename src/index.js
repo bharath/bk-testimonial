@@ -22,12 +22,8 @@ import {
 	BlockControls,
 	AlignmentToolbar,
 	PanelColorSettings,
-	BlockVerticalAlignmentToolbar,
 	MediaPlaceholder,
-	MediaReplaceFlow,
 	withColors,
-	FontSizePicker,
-	withFontSizes,
 	__experimentalUseColors,
 	InspectorControls,
 } from '@wordpress/editor';
@@ -37,14 +33,7 @@ import {
 	PanelBody,
 	PanelRow,
 	FormToggle,
-	TextControl,
 	ToggleControl,
-	ToolbarGroup,
-	ExternalLink,
-	FocalPointPicker,
-	RangeControl,
-	SelectControl,
-	ColorPalette
 } from '@wordpress/components';
 
 //const { InspectorControls } = wp.editor;
@@ -138,20 +127,20 @@ registerBlockType( 'oleti/bk-testimonial', {
 		},
 		backgroundColor: {
 			type: 'string',
-			default: '#000000'
+			default: '#000000',
 		},
 		textColor: {
 			type: 'string',
-			default: '#ffffff'
+			default: '#ffffff',
 		},
 		testimonialFontSize: {
 			type: 'number',
-			default: 18
+			default: 18,
 		},
 		highContrast: {
-                type: 'boolean',
-                default: false,
-            },
+			type: 'boolean',
+			default: false,
+		},
 	},
 
 	/**
@@ -159,15 +148,15 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 */
 	supports: {
 		// Add the support for block's alignment (left, center, right, wide, full).
-		align: true,
+		//align: true,
 		// Pick which alignment options to display ('left', 'right', 'center', 'wide','full').
 		align: [ 'wide','full' ],
 		// Add the support for an anchor link.
-		anchor: true,
+		//anchor: true,
 		// Remove the support for the generated className.
 		//className: false,
 		// Removes support for an HTML mode.
-		html: false,
+		//html: false,
 	},
 
 	/**
@@ -180,7 +169,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 *
 	 * @return {WPElement} Element to render.
 	 */
-	edit: ( { attributes, setAttributes, PanelColorSettings } ) => {
+	edit: ( { attributes, setAttributes } ) => {
 
 		// Simplify access to attributes
 		const {
@@ -235,31 +224,23 @@ registerBlockType( 'oleti/bk-testimonial', {
 		return (
 
 			<InspectorControls>
-
-				<PanelBody
-                        title={ __( 'High Contrast', 'jsforwpblocks' ) }
-                    >
-                        <PanelRow>
-                            <label
-                                htmlFor="high-contrast-form-toggle"
-                            >
-                                { __( 'High Contrast', 'jsforwpblocks' ) }
-                            </label>
-                            <FormToggle
-                                id="high-contrast-form-toggle"
-                                label={ __( 'High Contrast', 'jsforwpblocks' ) }
-                                checked={ highContrast }
-                                onChange={ toggleHighContrast }
-                            />
-                        </PanelRow>
-                    </PanelBody>
-
-				<ToggleControl
-					label="Toggle Field"
-					checked={ highContrast }
-                    onChange={ toggleHighContrast }
-				/>
-            </InspectorControls>,
+				<PanelBody title={ __( 'Testimonial settings' ) }>
+					<ToggleControl
+						label={ __( 'Stack on mobile' ) }
+						checked={ highContrast }
+						onChange={ () =>
+							setAttributes( {
+								isStackedOnMobile: ! isStackedOnMobile,
+							} )
+						}
+					/>
+					<ToggleControl
+						label="Toggle Field"
+						checked={ highContrast }
+						onChange={ toggleHighContrast }
+					/>
+				</PanelBody>
+			</InspectorControls>,
 
 			<BlockControls>
 				<AlignmentToolbar
@@ -294,7 +275,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 						multiline="p"
 						placeholder="Testimonial Content"
 						formattingControls={ [] }
-						isSelected={ attributes.isSelected }
+						//isSelected={ attributes.isSelected }
 						style={ {
 							textAlign: textAlignment,
 							color: textColor
@@ -312,8 +293,11 @@ registerBlockType( 'oleti/bk-testimonial', {
 							//multiline="p"
 							placeholder="Name"
 							formattingControls={ [] }
-							isSelected={ attributes.isSelected }
-							style={ { textAlign: textAlignment } }
+							//isSelected={ attributes.isSelected }
+							style={ {
+								textAlign: textAlignment,
+								color: textColor
+							} }
 							className="bk-testimonial-author"
 							tagName="h2"
 						/>
@@ -325,8 +309,11 @@ registerBlockType( 'oleti/bk-testimonial', {
 							//multiline="p"
 							placeholder="Role, Company"
 							formattingControls={ [] }
-							isSelected={ attributes.isSelected }
-							style={ { textAlign: textAlignment } }
+							//isSelected={ attributes.isSelected }
+							style={ {
+								textAlign: textAlignment,
+								color: textColor
+							} }
 							className="bk-testimonial-role"
 							tagName="cite"
 						/>

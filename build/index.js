@@ -86,32 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -121,22 +95,16 @@ module.exports = _defineProperty;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
-
-
-var _supports;
-
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 
 
 /**
@@ -168,18 +136,18 @@ var _supports;
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
 
-Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('oleti/bk-testimonial', {
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('oleti/bk-testimonial', {
   /**
    * This is the display title for your block, which can be translated with `i18n` functions.
    * The block inserter will show this name.
    */
-  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Testimonial', 'oleti'),
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Testimonial', 'oleti'),
 
   /**
    * This is a short description for your block, can be translated with `i18n` functions.
    * It will be shown in the Block Tab in the Settings Sidebar.
    */
-  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Testimonial block for Gutenberg', 'oleti'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Testimonial block for Gutenberg', 'oleti'),
 
   /**
    * Blocks are grouped into categories to help users browse and discover them.
@@ -194,19 +162,19 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
   icon: 'testimonial',
   // Make it easier to discover a block with keyword aliases.
   // These can be localised so your keywords work across locales.
-  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('testimonial'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('quotes')],
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('testimonial'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('quotes')],
   // Register block styles.
   styles: [// Mark style as default.
   {
     name: 'default',
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Image on Left'),
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Image on Left'),
     isDefault: true
   }, {
     name: 'image-on-left',
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Image on Right')
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Image on Right')
   }, {
     name: 'image-on-top',
-    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Image on Top')
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Image on Top')
   }],
   // Specifying block attributes
   attributes: {
@@ -260,10 +228,18 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
   /**
    * Optional block extended support features.
    */
-  supports: (_supports = {
+  supports: {
     // Add the support for block's alignment (left, center, right, wide, full).
-    align: true
-  }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_supports, "align", ['wide', 'full']), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_supports, "anchor", true), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_supports, "html", false), _supports),
+    //align: true,
+    // Pick which alignment options to display ('left', 'right', 'center', 'wide','full').
+    align: ['wide', 'full'] // Add the support for an anchor link.
+    //anchor: true,
+    // Remove the support for the generated className.
+    //className: false,
+    // Removes support for an HTML mode.
+    //html: false,
+
+  },
 
   /**
    * The edit function describes the structure of your block in the context of the editor.
@@ -277,8 +253,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
    */
   edit: function edit(_ref) {
     var attributes = _ref.attributes,
-        setAttributes = _ref.setAttributes,
-        PanelColorSettings = _ref.PanelColorSettings;
+        setAttributes = _ref.setAttributes;
     // Simplify access to attributes
     var imageAlt = attributes.imageAlt,
         imageUrl = attributes.imageUrl,
@@ -294,17 +269,17 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
 
     var getImageButton = function getImageButton(openEvent) {
       if (attributes.imageUrl) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("figure", {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
           className: "wp-block-oleti-bk-testimonial__media"
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
           src: attributes.imageUrl,
           onClick: openEvent,
           className: "bk-testimonial-image"
         }));
       } else {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
           className: "wp-block-oleti-bk-testimonial__button"
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Button"], {
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Button"], {
           onClick: openEvent,
           className: "button button-large"
         }, "Add Image"));
@@ -322,32 +297,33 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
     //}
 
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('High Contrast', 'jsforwpblocks')
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("label", {
-      htmlFor: "high-contrast-form-toggle"
-    }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('High Contrast', 'jsforwpblocks')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["FormToggle"], {
-      id: "high-contrast-form-toggle",
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('High Contrast', 'jsforwpblocks'),
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Testimonial settings')
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Stack on mobile'),
       checked: highContrast,
-      onChange: toggleHighContrast
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
+      onChange: function onChange() {
+        return setAttributes({
+          isStackedOnMobile: !isStackedOnMobile
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
       label: "Toggle Field",
       checked: highContrast,
       onChange: toggleHighContrast
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__["AlignmentToolbar"], {
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["AlignmentToolbar"], {
       value: textAlignment,
       onChange: function onChange(textAlignment) {
         return setAttributes({
           textAlignment: textAlignment
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "bk-testimonial",
       style: {
         backgroundColor: backgroundColor
       }
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__["MediaUpload"], {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["MediaUpload"], {
       onSelect: function onSelect(media) {
         setAttributes({
           imageAlt: media.alt,
@@ -360,9 +336,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
         var open = _ref2.open;
         return getImageButton(open);
       }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("blockquote", {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("blockquote", {
       className: "bk-testimonial-blockquote"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
       onChange: function onChange(testimonialContent) {
         return setAttributes({
           testimonialContent: testimonialContent
@@ -371,15 +347,15 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       value: attributes.testimonialContent,
       multiline: "p",
       placeholder: "Testimonial Content",
-      formattingControls: [],
-      isSelected: attributes.isSelected,
+      formattingControls: [] //isSelected={ attributes.isSelected }
+      ,
       style: {
         textAlign: textAlignment,
         color: textColor
       },
       className: "bk-testimonial-content",
       tagName: "span"
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
       onChange: function onChange(testimonialAuthor) {
         return setAttributes({
           testimonialAuthor: testimonialAuthor
@@ -388,14 +364,15 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       value: attributes.testimonialAuthor //multiline="p"
       ,
       placeholder: "Name",
-      formattingControls: [],
-      isSelected: attributes.isSelected,
+      formattingControls: [] //isSelected={ attributes.isSelected }
+      ,
       style: {
-        textAlign: textAlignment
+        textAlign: textAlignment,
+        color: textColor
       },
       className: "bk-testimonial-author",
       tagName: "h2"
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
       onChange: function onChange(testimonialRole) {
         return setAttributes({
           testimonialRole: testimonialRole
@@ -404,10 +381,11 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       value: attributes.testimonialRole //multiline="p"
       ,
       placeholder: "Role, Company",
-      formattingControls: [],
-      isSelected: attributes.isSelected,
+      formattingControls: [] //isSelected={ attributes.isSelected }
+      ,
       style: {
-        textAlign: textAlignment
+        textAlign: textAlignment,
+        color: textColor
       },
       className: "bk-testimonial-role",
       tagName: "cite"
@@ -432,7 +410,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       if (!src) return null;
 
       if (alt) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
           className: "bk-testimonial-image",
           src: src,
           alt: alt
@@ -440,7 +418,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       } // No alt set, so let's hide it from screen readers
 
 
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
         className: "bk-testimonial-image",
         src: src,
         alt: "",
@@ -448,20 +426,20 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       });
     };
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "bk-testimonial"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("figure", {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
       className: "wp-block-oleti-bk-testimonial__media"
-    }, testimonialImage(attributes.imageUrl, attributes.imageAlt)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("blockquote", {
+    }, testimonialImage(attributes.imageUrl, attributes.imageAlt)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("blockquote", {
       className: "bk-testimonial-blockquote"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
       className: "bk-testimonial-content",
       style: {
         textAlign: textAlignment
       }
-    }, attributes.testimonialContent), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("h2", {
+    }, attributes.testimonialContent), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
       className: "bk-testimonial-author"
-    }, attributes.testimonialAuthor), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("cite", {
+    }, attributes.testimonialAuthor), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("cite", {
       className: "bk-testimonial-role"
     }, attributes.testimonialRole))));
   }
