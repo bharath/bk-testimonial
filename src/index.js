@@ -219,8 +219,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 				style={ {
 					backgroundColor: backgroundColor,
 				} }
-
-				className={ classnames( 'bk-testimonial', className, {
+				className={ classnames( className, `bk-testimonial has-text-align-${ props.attributes.alignment }`, {
 					'has-background': backgroundClass || customBackgroundColor,
 					[ backgroundClass ]: backgroundClass,
 					'has-text-color': textClass || customTextColor,
@@ -284,9 +283,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 					render={ ( { open } ) => getImageButton( open ) }
 				/>
 
-				<blockquote
-					className={ `bk-testimonial-blockquote bk-testimonial-align-${ props.attributes.alignment }` }
-				>
+				<blockquote className="bk-testimonial-blockquote">
 					<RichText
 						onChange={ ( testimonialContent ) =>
 							props.setAttributes( { testimonialContent } )
@@ -392,7 +389,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 
 		return (
 			<div
-				className={ classnames( `bk-testimonial bk-testimonial-align-${ props.attributes.alignment }`, {
+				className={ classnames( `bk-testimonial has-text-align-${ props.attributes.alignment }`, {
 					'has-background': backgroundClass || customBackgroundColor,
 					[ backgroundClass ]: backgroundClass,
 					'has-text-color': textClass || customTextColor,

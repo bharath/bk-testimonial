@@ -51,15 +51,15 @@
 	text-align: center;
 }
 
-.bk-testimonial-align-right .bk-testimonial-content,
-.bk-testimonial-align-right .bk-testimonial-author,
-.bk-testimonial-align-right .bk-testimonial-role {
+.has-text-align-right .bk-testimonial-content,
+.has-text-align-right .bk-testimonial-author,
+.has-text-align-right .bk-testimonial-role {
 	text-align: right;
 }
 
-.bk-testimonial-align-left .bk-testimonial-content,
-.bk-testimonial-align-left .bk-testimonial-author,
-.bk-testimonial-align-left .bk-testimonial-role {
+.has-text-align-left .bk-testimonial-content,
+.has-text-align-left .bk-testimonial-author,
+.has-text-align-left .bk-testimonial-role {
 	text-align: left;
 }
 
