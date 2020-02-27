@@ -5,17 +5,81 @@
  * Replace them with your own styles or remove the file completely.
  */
 
+.wp-block-oleti-bk-testimonial {
+	padding: 50px;
+	direction: ltr;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+	margin-bottom: 30px;
+}
+
+.wp-block-oleti-bk-testimonial__button {
+	background: #f5f5f5;
+	padding: 30px;
+	display: table;
+    margin: 0 auto;
+}
+
+.wp-block-oleti-bk-testimonial__media {
+	margin: 0;
+}
+
+.wp-block-oleti-bk-testimonial blockquote {
+	margin: 30px;
+}
+
+.wp-block-oleti-bk-testimonial__button {
+
+}
+
+.wp-block-oleti-bk-testimonial__media img {
+    max-width: 256px;
+    border-radius: 100%;
+    height: 256px;
+    max-height: 256px;
+    display: table;
+    margin: 0 auto;
+}
+
+.bk-testimonial-content,
+.bk-testimonial-author,
+.bk-testimonial-role {
+	text-align: center;
+}
+
+.bk-testimonial-align-right .bk-testimonial-content,
+.bk-testimonial-align-right .bk-testimonial-author,
+.bk-testimonial-align-right .bk-testimonial-role {
+	text-align: right;
+}
+
+.bk-testimonial-align-left .bk-testimonial-content,
+.bk-testimonial-align-left .bk-testimonial-author,
+.bk-testimonial-align-left .bk-testimonial-role {
+	text-align: left;
+}
 
 
 .bk-testimonial-author {
-	margin-bottom: 0;
+	font-size: 20px;
+	margin-bottom: 5px;
+	font-style: normal;
 }
 
-.bk-testimonial-text {
-	font-size: 32px;
+.bk-testimonial-role {
+	font-size: 18px;
+	display: block;
 }
 
-.wp-block-oleti-bk-testimonial {
+
+/* -- Image on left
+--------------------------------------------- */
+
+.wp-block-oleti-bk-testimonial.is-style-image-on-left {
     direction: ltr;
     display: -ms-grid;
     display: grid;
@@ -26,46 +90,32 @@
 	margin-bottom: 30px;
 }
 
-.wp-block-media-text.has-media-on-the-right {
-    -ms-grid-columns: 1fr 35%;
-    grid-template-columns: 1fr 35%
-}
-
-.wp-block-media-text.is-vertically-aligned-top .wp-block-media-text__content,
-.wp-block-media-text.is-vertically-aligned-top .wp-block-oleti-bk-testimonial__media {
-    -ms-grid-row-align: start;
-    align-self: start
-}
-
-.wp-block-oleti-bk-testimonial.is-vertically-aligned-center .bk-testimonial-blockquote,
-.wp-block-oleti-bk-testimonial.is-vertically-aligned-center .wp-block-oleti-bk-testimonial__media,
-.wp-block-oleti-bk-testimonial .bk-testimonial-blockquote,
-.wp-block-oleti-bk-testimonial .wp-block-oleti-bk-testimonial__media {
+.wp-block-oleti-bk-testimonial.is-style-image-on-left .bk-testimonial-blockquote,
+.wp-block-oleti-bk-testimonial.is-style-image-on-left .wp-block-oleti-bk-testimonial__button,
+.wp-block-oleti-bk-testimonial.is-style-image-on-left .wp-block-oleti-bk-testimonial__media {
     -ms-grid-row-align: center;
     align-self: center
 }
 
-.wp-block-media-text.is-vertically-aligned-bottom .wp-block-media-text__content,
-.wp-block-media-text.is-vertically-aligned-bottom .wp-block-oleti-bk-testimonial__media {
-    -ms-grid-row-align: end;
-    align-self: end
-}
 
-.wp-block-media-text .wp-block-oleti-bk-testimonial__media {
-    -ms-grid-column: 2;
-    grid-column: 2;
-    -ms-grid-row: 2;
-    grid-row: 2;
-    margin: 0
-}
 
-.wp-block-media-text .wp-block-media-text__content {
+
+/* -- Image on right
+--------------------------------------------- */
+
+.wp-block-oleti-bk-testimonial.is-style-image-on-right {
     direction: ltr;
-    padding: 0 8%;
-    word-break: break-word
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 35%;
+    grid-template-columns: 1fr 35%;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+	margin-bottom: 30px;
 }
 
-.wp-block-media-text.has-media-on-the-right .wp-block-oleti-bk-testimonial__media,
+.wp-block-oleti-bk-testimonial.is-style-image-on-right .wp-block-oleti-bk-testimonial__button,
+.wp-block-oleti-bk-testimonial.is-style-image-on-right .wp-block-oleti-bk-testimonial__media,
 .wp-block-media-text .wp-block-media-text__content {
     -ms-grid-column: 2;
     grid-column: 2;
@@ -73,60 +123,16 @@
     grid-row: 1
 }
 
-.wp-block-media-text.has-media-on-the-right .wp-block-media-text__content {
+.wp-block-oleti-bk-testimonial.is-style-image-on-right .wp-block-media-text__content {
     -ms-grid-column: 1;
     grid-column: 1;
     -ms-grid-row: 1;
     grid-row: 1
 }
 
-.wp-block-media-text>figure>img,.wp-block-media-text>figure>video {
-    max-width: unset;
-    width: 100%;
-    vertical-align: middle
-}
-
-.wp-block-media-text.is-image-fill figure.wp-block-oleti-bk-testimonial__media {
-    height: 100%;
-    min-height: 250px;
-    background-size: cover
-}
-
-.wp-block-media-text.is-image-fill figure.wp-block-oleti-bk-testimonial__media>img {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0
-}
-
-@media (max-width: 600px) {
-    .wp-block-media-text.is-stacked-on-mobile {
-        -ms-grid-columns:100%!important;
-        grid-template-columns: 100%!important
-    }
-
-    .wp-block-media-text.is-stacked-on-mobile .wp-block-oleti-bk-testimonial__media {
-        -ms-grid-column: 1;
-        grid-column: 1;
-        -ms-grid-row: 1;
-        grid-row: 1
-    }
-
-    .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-oleti-bk-testimonial__media,.wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
-        -ms-grid-column: 1;
-        grid-column: 1;
-        -ms-grid-row: 2;
-        grid-row: 2
-    }
-
-    .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__content {
-        -ms-grid-column: 1;
-        grid-column: 1;
-        -ms-grid-row: 1;
-        grid-row: 1
-    }
+.wp-block-oleti-bk-testimonial.is-style-image-on-right .bk-testimonial-blockquote,
+.wp-block-oleti-bk-testimonial.is-style-image-on-right .wp-block-oleti-bk-testimonial__button,
+.wp-block-oleti-bk-testimonial.is-style-image-on-right .wp-block-oleti-bk-testimonial__media {
+    -ms-grid-row-align: center;
+    align-self: center
 }

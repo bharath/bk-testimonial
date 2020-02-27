@@ -76,16 +76,16 @@ registerBlockType( 'oleti/bk-testimonial', {
 		// Mark style as default.
 		{
 			name: 'default',
-			label: __( 'Image on Left' ),
+			label: __( 'Image on Top' ),
 			isDefault: true,
 		},
 		{
 			name: 'image-on-left',
-			label: __( 'Image on Right' ),
+			label: __( 'Image on Left' ),
 		},
 		{
-			name: 'image-on-top',
-			label: __( 'Image on Top' ),
+			name: 'image-on-right',
+			label: __( 'Image on Right' ),
 		},
 	],
 
@@ -126,7 +126,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 		},
 		testimonialFontSize: {
 			type: 'number',
-			default: 18,
+			default: 24,
 		},
 	},
 
@@ -234,8 +234,8 @@ registerBlockType( 'oleti/bk-testimonial', {
 								label={ __( 'Font Size', 'oleti' ) }
 								value={ testimonialFontSize }
 								onChange={testimonialFontSize => props.setAttributes({ testimonialFontSize })}
-								min={ 16 }
-								max={ 24 }
+								min={ 24 }
+								max={ 32 }
 								step={ 1 }
 							/>
 						</PanelBody>
@@ -293,7 +293,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 						}
 						value={ testimonialContent }
 						multiline="p"
-						placeholder="Testimonial Content"
+						placeholder="Add Testimonial Content"
 						style={ {
 							textAlign: alignment,
 							color: textColor
@@ -308,7 +308,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 								props.setAttributes( { testimonialAuthor } )
 							}
 							value={ props.attributes.testimonialAuthor }
-							placeholder="Name"
+							placeholder="Add Name"
 							style={ {
 								textAlign: alignment,
 								color: textColor
@@ -321,7 +321,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 								props.setAttributes( { testimonialRole } )
 							}
 							value={ props.attributes.testimonialRole }
-							placeholder="Role, Company"
+							placeholder="Add Role, Company"
 							style={ {
 								textAlign: alignment,
 								color: textColor

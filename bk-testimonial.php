@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Testimonial Block
  * Description:     Testimonial block for Gutenberg with custom styles.
- * Version:         0.1.0
+ * Version:         1.0.0
  * Author:          Bharath
  * License:         GPL-2.0-or-later
  * Text Domain:     oleti
