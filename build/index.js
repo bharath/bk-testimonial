@@ -354,7 +354,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
         textColor = _props$attributes.textColor,
         alignment = _props$attributes.alignment,
         customBackgroundColor = _props$attributes.customBackgroundColor,
-        customTextColor = _props$attributes.customTextColor;
+        customTextColor = _props$attributes.customTextColor,
+        className = props.className;
 
     var toggleHighContrast = function toggleHighContrast() {
       return props.setAttributes({
@@ -393,11 +394,11 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
 
 
     var backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('background-color', backgroundColor);
-    var textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor);
-    var className = classnames__WEBPACK_IMPORTED_MODULE_4___default()(backgroundClass, textClass, {
-      'has-text-color': textColor || customTextColor,
-      'has-background': backgroundColor || customBackgroundColor
-    });
+    var textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor); //const className = classnames( backgroundClass, textClass, {
+    //	'has-text-color': textColor || customTextColor,
+    //	'has-background': backgroundColor || customBackgroundColor,
+    //} );
+
     var styles = {
       backgroundColor: backgroundClass ? undefined : customBackgroundColor,
       color: textClass ? undefined : customTextColor
@@ -406,7 +407,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       style: {
         backgroundColor: backgroundColor
       },
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('bk-testimonial', (_classnames = {
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('bk-testimonial', className, (_classnames = {
         'has-background': backgroundClass || customBackgroundColor
       }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundClass, backgroundClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-text-color', textClass || customTextColor), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textClass, textClass), _classnames))
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["PanelColorSettings"], {

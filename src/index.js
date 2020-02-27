@@ -182,6 +182,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 				customBackgroundColor,
 				customTextColor,
 			},
+			className
 		} = props;
 
 		const toggleHighContrast = () => props.setAttributes( { highContrast: ! highContrast } );
@@ -237,10 +238,10 @@ registerBlockType( 'oleti/bk-testimonial', {
 			textColor
 		);
 
-		const className = classnames( backgroundClass, textClass, {
-			'has-text-color': textColor || customTextColor,
-			'has-background': backgroundColor || customBackgroundColor,
-		} );
+		//const className = classnames( backgroundClass, textClass, {
+		//	'has-text-color': textColor || customTextColor,
+		//	'has-background': backgroundColor || customBackgroundColor,
+		//} );
 
 		const styles = {
 			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
@@ -254,7 +255,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 					backgroundColor: backgroundColor,
 				} }
 
-				className={ classnames( 'bk-testimonial', {
+				className={ classnames( 'bk-testimonial', className, {
 					'has-background': backgroundClass || customBackgroundColor,
 					[ backgroundClass ]: backgroundClass,
 					'has-text-color': textClass || customTextColor,
