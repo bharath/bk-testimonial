@@ -11,6 +11,7 @@ import { registerBlockType } from '@wordpress/blocks';
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
+
 import classnames from 'classnames';
 
 /**
@@ -21,7 +22,6 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 	BlockControls,
-	AlignmentToolbar,
 	PanelColorSettings,
 	MediaPlaceholder,
 	withColors,
@@ -29,7 +29,13 @@ import {
 	InspectorControls,
 	ContrastChecker,
 	getColorClassName,
+	getFontSizeClass,
+	FontSizePicker,
 } from '@wordpress/editor';
+
+import {
+	AlignmentToolbar,
+} from '@wordpress/block-editor';
 
 import {
 	Button,
@@ -37,11 +43,10 @@ import {
 	PanelRow,
 	FormToggle,
 	ToggleControl,
+	RangeControl,
 } from '@wordpress/components';
 
-import { InnerBlocks, } from '@wordpress/block-editor';
-
-
+//import { InnerBlocks, } from '@wordpress/block-editor';
 //const { InspectorControls } = wp.editor;
 //import { InspectorControls } from '@wordpress/block-editor';
 //import { InspectorControls } from '@wordpress/block-editor';
@@ -125,11 +130,9 @@ registerBlockType( 'oleti/bk-testimonial', {
 			source: 'children',
 			selector: '.bk-testimonial-role',
 		},
-		textAlignment: {
+		alignment: {
 			type: 'string',
-		},
-		verticalAlignment: {
-			type: 'string',
+			default: 'none',
 		},
 		backgroundColor: {
 			type: 'string',
@@ -140,10 +143,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 		testimonialFontSize: {
 			type: 'number',
 			default: 18,
-		},
-		highContrast: {
-			type: 'boolean',
-			default: false,
 		},
 	},
 
@@ -175,12 +174,14 @@ registerBlockType( 'oleti/bk-testimonial', {
 		const {
 			attributes: {
 				testimonialContent,
-				textAlignment,
 				backgroundColor,
 				textColor,
 				alignment,
 				customBackgroundColor,
 				customTextColor,
+				fontSize,
+				setFontSize,
+				testimonialFontSize,
 			},
 			className
 		} = props;
@@ -238,15 +239,18 @@ registerBlockType( 'oleti/bk-testimonial', {
 			textColor
 		);
 
+		const fontSizeClass = getFontSizeClass( fontSize );
+
+
 		//const className = classnames( backgroundClass, textClass, {
 		//	'has-text-color': textColor || customTextColor,
 		//	'has-background': backgroundColor || customBackgroundColor,
 		//} );
 
-		const styles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			color: textClass ? undefined : customTextColor,
-		};
+		//const styles = {
+		//	backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+		//	color: textClass ? undefined : customTextColor,
+		//};
 
 		return (
 
@@ -260,12 +264,23 @@ registerBlockType( 'oleti/bk-testimonial', {
 					[ backgroundClass ]: backgroundClass,
 					'has-text-color': textClass || customTextColor,
 					[ textClass ]: textClass,
+					[ fontSizeClass ]: fontSizeClass,
 				} ) }
 			>
 				{
 					<InspectorControls>
+						<PanelBody title={ __( 'Text settings' ) }>
+							<RangeControl
+								label={ __( 'Font Size', 'oleti' ) }
+								value={ testimonialFontSize }
+								onChange={testimonialFontSize => props.setAttributes({ testimonialFontSize })}
+								min={ 16 }
+								max={ 24 }
+								step={ 1 }
+							/>
+						</PanelBody>
 						<PanelColorSettings
-							title={ __( 'Color settings' ) }
+							title={ __( 'Color settings', 'oleti' ) }
 							initialOpen={ false }
 							colorSettings={[
 								{
@@ -273,18 +288,17 @@ registerBlockType( 'oleti/bk-testimonial', {
 									onChange: backgroundColor => {
 										props.setAttributes({ backgroundColor });
 									},
-									label: __( 'Background color' ),
+									label: __( 'Background color', 'oleti' ),
 								},
 								{
 									value: textColor,
 									onChange: textColor => {
 										props.setAttributes({ textColor });
 									},
-									label: __( 'Text color' ),
+									label: __( 'Text color', 'oleti' ),
 								},
 							]}
 						>
-
 						</PanelColorSettings>
 
 					</InspectorControls>
@@ -309,8 +323,9 @@ registerBlockType( 'oleti/bk-testimonial', {
 					value={ props.attributes.imageID }
 					render={ ( { open } ) => getImageButton( open ) }
 				/>
-								<blockquote className="bk-testimonial-blockquote">
-
+				<blockquote
+					className={ `bk-testimonial-blockquote bk-testimonial-align-${ props.attributes.alignment }` }
+				>
 					<RichText
 						onChange={ ( testimonialContent ) =>
 							props.setAttributes( { testimonialContent } )
@@ -318,13 +333,16 @@ registerBlockType( 'oleti/bk-testimonial', {
 						value={ testimonialContent }
 						multiline="p"
 						placeholder="Testimonial Content"
-						formattingControls={ [] }
 						//isSelected={ attributes.isSelected }
 						style={ {
+							fontSize: fontSize
+								? fontSize + 'px'
+								: undefined,
 							textAlign: alignment,
 							color: textColor
 						} }
-						className="bk-testimonial-content"
+						//className="bk-testimonial-content"
+						className={ `bk-testimonial-content bk-font-size-${ props.attributes.testimonialFontSize }` }
 						tagName="span"
 					/>
 
@@ -381,7 +399,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 		const {
 			attributes: {
 				testimonialContent,
-				textAlignment,
 				backgroundColor,
 				textColor,
 				alignment,
@@ -432,25 +449,26 @@ registerBlockType( 'oleti/bk-testimonial', {
 			textColor
 		);
 
-		const className = classnames( backgroundClass, textClass, {
-			'has-text-color': textColor || customTextColor,
-			'has-background': backgroundColor || customBackgroundColor,
-		} );
+		//const className = classnames( backgroundClass, textClass, {
+		//	'has-text-color': textColor || customTextColor,
+		//	'has-background': backgroundColor || customBackgroundColor,
+		//} );
 
-		const styles = {
-			backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-			color: textClass ? undefined : customTextColor,
-		};
+		//const styles = {
+		//	backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+		//	color: textClass ? undefined : customTextColor,
+		//};
 
 		return (
 			<div
-				className={ classnames( 'bk-testimonial', {
+				className={ classnames( `bk-testimonial bk-testimonial-align-${ props.attributes.alignment }`, {
 					'has-background': backgroundClass || customBackgroundColor,
 					[ backgroundClass ]: backgroundClass,
 					'has-text-color': textClass || customTextColor,
 					[ textClass ]: textClass,
 				} ) }
 			>
+
 				<figure className="wp-block-oleti-bk-testimonial__media">
 					{ testimonialImage(
 						props.attributes.imageUrl,
@@ -458,7 +476,10 @@ registerBlockType( 'oleti/bk-testimonial', {
 					) }
 				</figure>
 				<blockquote className="bk-testimonial-blockquote">
-					<span className="bk-testimonial-content">
+					<span
+						//className="bk-testimonial-content"
+						className={ `bk-testimonial-content bk-font-size-${ props.attributes.testimonialFontSize }` }
+					>
 						{ props.attributes.testimonialContent }
 					</span>
 
