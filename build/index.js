@@ -201,6 +201,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
 
 
+var _supports;
+
+
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -222,11 +225,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- //import { InnerBlocks, } from '@wordpress/block-editor';
-//const { InspectorControls } = wp.editor;
-//import { InspectorControls } from '@wordpress/block-editor';
-//import { InspectorControls } from '@wordpress/block-editor';
-//import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -318,16 +316,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
   /**
    * Optional block extended support features.
    */
-  supports: {
+  supports: (_supports = {
     // Add the support for block's alignment (left, center, right, wide, full).
-    //align: true,
-    // Pick which alignment options to display ('left', 'right', 'center', 'wide','full').
-    align: ['wide', 'full'],
-    // Add the support for an anchor link.
-    //anchor: true,
-    // Removes support for an HTML mode.
-    html: false
-  },
+    align: true
+  }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_supports, "align", ['wide', 'full']), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_supports, "anchor", true), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_supports, "html", false), _supports),
 
   /**
    * The edit function describes the structure of your block in the context of the editor.
@@ -349,16 +341,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
         alignment = _props$attributes.alignment,
         customBackgroundColor = _props$attributes.customBackgroundColor,
         customTextColor = _props$attributes.customTextColor,
-        fontSize = _props$attributes.fontSize,
-        setFontSize = _props$attributes.setFontSize,
         testimonialFontSize = _props$attributes.testimonialFontSize,
         className = props.className;
-
-    var toggleHighContrast = function toggleHighContrast() {
-      return props.setAttributes({
-        highContrast: !highContrast
-      });
-    };
 
     var onChangeAlignment = function onChangeAlignment(newAlignment) {
       props.setAttributes({
@@ -383,31 +367,17 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
           className: "button button-large"
         }, "Add Image"));
       }
-    }; // Toggle a setting when the user clicks the button
-    //const toggleSetting = () => setAttributes( { mySetting: ! mySetting } );
-    //function toggleHighContrast( newValue ) {
-    //	setAttributes( { highContrast: newValue } );
-    //}
-
+    };
 
     var backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('background-color', backgroundColor);
     var textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor);
-    var fontSizeClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getFontSizeClass"])(fontSize); //const className = classnames( backgroundClass, textClass, {
-    //	'has-text-color': textColor || customTextColor,
-    //	'has-background': backgroundColor || customBackgroundColor,
-    //} );
-    //const styles = {
-    //	backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-    //	color: textClass ? undefined : customTextColor,
-    //};
-
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
       style: {
         backgroundColor: backgroundColor
       },
       className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('bk-testimonial', className, (_classnames = {
         'has-background': backgroundClass || customBackgroundColor
-      }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundClass, backgroundClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-text-color', textClass || customTextColor), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textClass, textClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, fontSizeClass, fontSizeClass), _classnames))
+      }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundClass, backgroundClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-text-color', textClass || customTextColor), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textClass, textClass), _classnames))
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelBody"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Text settings')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
@@ -467,14 +437,11 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       },
       value: testimonialContent,
       multiline: "p",
-      placeholder: "Testimonial Content" //isSelected={ attributes.isSelected }
-      ,
+      placeholder: "Testimonial Content",
       style: {
-        fontSize: fontSize ? fontSize + 'px' : undefined,
         textAlign: alignment,
         color: textColor
-      } //className="bk-testimonial-content"
-      ,
+      },
       className: "bk-testimonial-content bk-font-size-".concat(props.attributes.testimonialFontSize),
       tagName: "span"
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["RichText"], {
@@ -483,11 +450,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
           testimonialAuthor: testimonialAuthor
         });
       },
-      value: props.attributes.testimonialAuthor //multiline="p"
-      ,
+      value: props.attributes.testimonialAuthor,
       placeholder: "Name",
-      formattingControls: [] //isSelected={ attributes.isSelected }
-      ,
       style: {
         textAlign: alignment,
         color: textColor
@@ -500,11 +464,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
           testimonialRole: testimonialRole
         });
       },
-      value: props.attributes.testimonialRole //multiline="p"
-      ,
+      value: props.attributes.testimonialRole,
       placeholder: "Role, Company",
-      formattingControls: [] //isSelected={ attributes.isSelected }
-      ,
       style: {
         textAlign: alignment,
         color: textColor
@@ -553,28 +514,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       });
     };
 
-    var toggleHighContrast = function toggleHighContrast() {
-      return props.setAttributes({
-        highContrast: !highContrast
-      });
-    };
-
-    var onChangeAlignment = function onChangeAlignment(newAlignment) {
-      props.setAttributes({
-        alignment: newAlignment === undefined ? 'none' : newAlignment
-      });
-    };
-
     var backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('background-color', backgroundColor);
-    var textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor); //const className = classnames( backgroundClass, textClass, {
-    //	'has-text-color': textColor || customTextColor,
-    //	'has-background': backgroundColor || customBackgroundColor,
-    //} );
-    //const styles = {
-    //	backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-    //	color: textClass ? undefined : customTextColor,
-    //};
-
+    var textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
       className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("bk-testimonial bk-testimonial-align-".concat(props.attributes.alignment), (_classnames2 = {
         'has-background': backgroundClass || customBackgroundColor

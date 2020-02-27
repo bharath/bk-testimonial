@@ -20,17 +20,11 @@ import classnames from 'classnames';
 import {
 	RichText,
 	MediaUpload,
-	MediaUploadCheck,
 	BlockControls,
 	PanelColorSettings,
-	MediaPlaceholder,
-	withColors,
 	__experimentalUseColors,
 	InspectorControls,
-	ContrastChecker,
 	getColorClassName,
-	getFontSizeClass,
-	FontSizePicker,
 } from '@wordpress/editor';
 
 import {
@@ -40,18 +34,8 @@ import {
 import {
 	Button,
 	PanelBody,
-	PanelRow,
-	FormToggle,
-	ToggleControl,
 	RangeControl,
 } from '@wordpress/components';
-
-//import { InnerBlocks, } from '@wordpress/block-editor';
-//const { InspectorControls } = wp.editor;
-//import { InspectorControls } from '@wordpress/block-editor';
-//import { InspectorControls } from '@wordpress/block-editor';
-//import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-
 
 /**
  * Every block starts by registering a new block type definition.
@@ -151,11 +135,11 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 */
 	supports: {
 		// Add the support for block's alignment (left, center, right, wide, full).
-		//align: true,
+		align: true,
 		// Pick which alignment options to display ('left', 'right', 'center', 'wide','full').
 		align: [ 'wide','full' ],
 		// Add the support for an anchor link.
-		//anchor: true,
+		anchor: true,
 		// Removes support for an HTML mode.
 		html: false,
 	},
@@ -179,14 +163,10 @@ registerBlockType( 'oleti/bk-testimonial', {
 				alignment,
 				customBackgroundColor,
 				customTextColor,
-				fontSize,
-				setFontSize,
 				testimonialFontSize,
 			},
 			className
 		} = props;
-
-		const toggleHighContrast = () => props.setAttributes( { highContrast: ! highContrast } );
 
 		const onChangeAlignment = ( newAlignment ) => {
 			props.setAttributes( {
@@ -223,12 +203,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 			}
 		};
 
-		// Toggle a setting when the user clicks the button
-		//const toggleSetting = () => setAttributes( { mySetting: ! mySetting } );
-		//function toggleHighContrast( newValue ) {
-		//	setAttributes( { highContrast: newValue } );
-		//}
-
 		const backgroundClass = getColorClassName(
 			'background-color',
 			backgroundColor
@@ -238,19 +212,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 			'color',
 			textColor
 		);
-
-		const fontSizeClass = getFontSizeClass( fontSize );
-
-
-		//const className = classnames( backgroundClass, textClass, {
-		//	'has-text-color': textColor || customTextColor,
-		//	'has-background': backgroundColor || customBackgroundColor,
-		//} );
-
-		//const styles = {
-		//	backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-		//	color: textClass ? undefined : customTextColor,
-		//};
 
 		return (
 
@@ -264,7 +225,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 					[ backgroundClass ]: backgroundClass,
 					'has-text-color': textClass || customTextColor,
 					[ textClass ]: textClass,
-					[ fontSizeClass ]: fontSizeClass,
 				} ) }
 			>
 				{
@@ -323,6 +283,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 					value={ props.attributes.imageID }
 					render={ ( { open } ) => getImageButton( open ) }
 				/>
+
 				<blockquote
 					className={ `bk-testimonial-blockquote bk-testimonial-align-${ props.attributes.alignment }` }
 				>
@@ -333,15 +294,10 @@ registerBlockType( 'oleti/bk-testimonial', {
 						value={ testimonialContent }
 						multiline="p"
 						placeholder="Testimonial Content"
-						//isSelected={ attributes.isSelected }
 						style={ {
-							fontSize: fontSize
-								? fontSize + 'px'
-								: undefined,
 							textAlign: alignment,
 							color: textColor
 						} }
-						//className="bk-testimonial-content"
 						className={ `bk-testimonial-content bk-font-size-${ props.attributes.testimonialFontSize }` }
 						tagName="span"
 					/>
@@ -352,10 +308,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 								props.setAttributes( { testimonialAuthor } )
 							}
 							value={ props.attributes.testimonialAuthor }
-							//multiline="p"
 							placeholder="Name"
-							formattingControls={ [] }
-							//isSelected={ attributes.isSelected }
 							style={ {
 								textAlign: alignment,
 								color: textColor
@@ -368,10 +321,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 								props.setAttributes( { testimonialRole } )
 							}
 							value={ props.attributes.testimonialRole }
-							//multiline="p"
 							placeholder="Role, Company"
-							formattingControls={ [] }
-							//isSelected={ attributes.isSelected }
 							style={ {
 								textAlign: alignment,
 								color: textColor
@@ -382,7 +332,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 					</footer>
 				</blockquote>
 			</div>
-
 		);
 	},
 
@@ -431,14 +380,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 			);
 		};
 
-		const toggleHighContrast = () => props.setAttributes( { highContrast: ! highContrast } );
-
-		const onChangeAlignment = ( newAlignment ) => {
-			props.setAttributes( {
-				alignment: newAlignment === undefined ? 'none' : newAlignment,
-			} );
-		};
-
 		const backgroundClass = getColorClassName(
 			'background-color',
 			backgroundColor
@@ -449,16 +390,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 			textColor
 		);
 
-		//const className = classnames( backgroundClass, textClass, {
-		//	'has-text-color': textColor || customTextColor,
-		//	'has-background': backgroundColor || customBackgroundColor,
-		//} );
-
-		//const styles = {
-		//	backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-		//	color: textClass ? undefined : customTextColor,
-		//};
-
 		return (
 			<div
 				className={ classnames( `bk-testimonial bk-testimonial-align-${ props.attributes.alignment }`, {
@@ -468,7 +399,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 					[ textClass ]: textClass,
 				} ) }
 			>
-
 				<figure className="wp-block-oleti-bk-testimonial__media">
 					{ testimonialImage(
 						props.attributes.imageUrl,
