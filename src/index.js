@@ -12,31 +12,12 @@ import { registerBlockType } from '@wordpress/blocks';
  */
 import { __ } from '@wordpress/i18n';
 
-import classnames from 'classnames';
-
 /**
- * WordPress dependencies
+ * Internal dependencies
  */
-import {
-	RichText,
-	MediaUpload,
-	BlockControls,
-	PanelColorSettings,
-	__experimentalUseColors,
-	InspectorControls,
-} from '@wordpress/editor';
+import edit from './edit';
 
-import {
-	AlignmentToolbar,
-	getColorClassName,
-	getFontSizeClass,
-} from '@wordpress/block-editor';
-
-import {
-	Button,
-	PanelBody,
-	RangeControl,
-} from '@wordpress/components';
+import save from './save';
 
 /**
  * Every block starts by registering a new block type definition.
@@ -131,10 +112,6 @@ registerBlockType( 'oleti/bk-testimonial', {
 		customTextColor: {
 			type: 'string',
 		},
-		testimonialFontSize: {
-			type: 'number',
-			default: 24,
-		},
 		fontSize: {
 			type: 'string',
 		},
@@ -157,6 +134,8 @@ registerBlockType( 'oleti/bk-testimonial', {
 		html: false,
 	},
 
+	example: {},
+
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
 	 * This represents what the editor will render when the block is used.
@@ -167,200 +146,7 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 *
 	 * @return {WPElement} Element to render.
 	 */
-	edit: ( props ) => {
-		const {
-			attributes: {
-				testimonialContent,
-				backgroundColor,
-				textColor,
-				alignment,
-				customBackgroundColor,
-				customTextColor,
-				testimonialFontSize,
-				fontSize,
-				customFontSize,
-			},
-			className
-		} = props;
-
-		const onChangeAlignment = ( newAlignment ) => {
-			props.setAttributes( {
-				alignment: newAlignment === undefined ? 'none' : newAlignment,
-			} );
-		};
-
-		const getImageButton = ( openEvent ) => {
-			if ( props.attributes.imageUrl ) {
-				return (
-					<figure
-						className={ classnames(
-                            'wp-block-oleti-bk-testimonial__media',
-                        ) }
-					>
-						<img
-							src={ props.attributes.imageUrl }
-							onClick={ openEvent }
-							className="bk-testimonial-image"
-						/>
-					</figure>
-				);
-			} else {
-				return (
-					<div className="wp-block-oleti-bk-testimonial__button">
-						<Button
-							onClick={ openEvent }
-							className="button button-large"
-						>
-							Add Image
-						</Button>
-					</div>
-				);
-			}
-		};
-
-		//const fontSizeClass = fontSize && `is-${ fontSize }-text`;
-		const fontSizeClass = getFontSizeClass( fontSize );
-
-		const backgroundClass = getColorClassName(
-			'background-color',
-			backgroundColor
-		);
-
-		const textClass = getColorClassName(
-			'color',
-			textColor
-		);
-
-		return (
-
-			<div
-				style={ {
-					backgroundColor: backgroundColor,
-				} }
-
-				className={ classnames( className, `bk-testimonial is-${ fontSize }-text is-${ testimonialFontSize }-text has-text-align-${ props.attributes.alignment }`, backgroundClass, textClass, fontSizeClass, {
-					'has-background': backgroundColor || customBackgroundColor,
-					'has-text-color': textColor || customTextColor,
-					[ fontSizeClass ]: fontSizeClass,
-					//[ textClass ]: textClass,
-					//[ backgroundClass ]: backgroundClass,
-				} ) }
-			>
-				{
-					<InspectorControls>
-						<PanelBody title={ __( 'Text settings' ) }>
-							<RangeControl
-								label={ __( 'Font Size', 'oleti' ) }
-								value={ testimonialFontSize }
-								onChange={testimonialFontSize => props.setAttributes({ testimonialFontSize })}
-								min={ 24 }
-								max={ 32 }
-								step={ 1 }
-							/>
-							<FontSizePicker
-								label={ 'test' }
-								fallbackFontSize={ fallbackFontSize }
-								value={ fontSize.size }
-								onChange={ setFontSize }
-							/>
-						</PanelBody>
-						<PanelColorSettings
-							title={ __( 'Color settings', 'oleti' ) }
-							initialOpen={ false }
-							colorSettings={[
-								{
-									value: backgroundColor,
-									onChange: backgroundColor => {
-										props.setAttributes({ backgroundColor });
-									},
-									label: __( 'Background color', 'oleti' ),
-								},
-								{
-									value: textColor,
-									onChange: textColor => {
-										props.setAttributes({ textColor });
-									},
-									label: __( 'Text color', 'oleti' ),
-								},
-							]}
-						>
-						</PanelColorSettings>
-
-					</InspectorControls>
-				}
-				{
-					<BlockControls>
-						<AlignmentToolbar
-							value={ alignment }
-							onChange={ onChangeAlignment }
-						/>
-					</BlockControls>
-				}
-
-				<MediaUpload
-					onSelect={ ( media ) => {
-						props.setAttributes( {
-							imageAlt: media.alt,
-							imageUrl: media.url,
-						} );
-					} }
-					type="image"
-					value={ props.attributes.imageID }
-					render={ ( { open } ) => getImageButton( open ) }
-				/>
-
-				<blockquote className="bk-testimonial-blockquote">
-
-					<RichText
-						onChange={ ( testimonialContent ) =>
-							props.setAttributes( { testimonialContent } )
-						}
-						value={ testimonialContent }
-						multiline="p"
-						placeholder="Add Testimonial Content"
-						keepPlaceholderOnFocus
-						style={ {
-							//textAlign: alignment,
-							color: textColor
-						} }
-						className={ `bk-testimonial-content bk-font-size-${ props.attributes.testimonialFontSize }` }
-						tagName="span"
-					/>
-
-					<footer>
-						<RichText
-							onChange={ ( testimonialAuthor ) =>
-								props.setAttributes( { testimonialAuthor } )
-							}
-							value={ props.attributes.testimonialAuthor }
-							placeholder="Add Name"
-							keepPlaceholderOnFocus
-							style={ {
-								//textAlign: alignment,
-								color: textColor
-							} }
-							className="bk-testimonial-author"
-							tagName="h2"
-						/>
-						<RichText
-							onChange={ ( testimonialRole ) =>
-								props.setAttributes( { testimonialRole } )
-							}
-							value={ props.attributes.testimonialRole }
-							placeholder="Add Role, Company"
-							keepPlaceholderOnFocus
-							style={ {
-								//textAlign: alignment,
-								color: textColor
-							} }
-							className="bk-testimonial-role"
-							tagName="cite"
-						/>
-					</footer>
-				</blockquote>
-			</div>
-		);
-	},
+	edit,
 
 	/**
 	 * The save function defines the way in which the different attributes should be combined
@@ -370,92 +156,5 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 *
 	 * @return {WPElement} Element to render.
 	 */
-	save: ( props ) => {
-
-		const {
-			attributes: {
-				testimonialContent,
-				backgroundColor,
-				textColor,
-				alignment,
-				customBackgroundColor,
-				customTextColor,
-				fontSize,
-				customFontSize,
-			},
-			className
-		} = props;
-
-		const testimonialImage = ( src, alt ) => {
-			if ( ! src ) return null;
-
-			if ( alt ) {
-				return (
-					<img
-						className="bk-testimonial-image"
-						src={ src }
-						alt={ alt }
-					/>
-				);
-			}
-
-			// No alt set, so let's hide it from screen readers
-			return (
-				<img
-					className="bk-testimonial-image"
-					src={ src }
-					alt=""
-					aria-hidden="true"
-				/>
-			);
-		};
-
-		const fontSizeClass = fontSize && `is-${ fontSize }-text`;
-
-		const backgroundClass = getColorClassName(
-			'background-color',
-			backgroundColor
-		);
-
-		const textClass = getColorClassName(
-			'color',
-			textColor
-		);
-
-		return (
-			<div
-				className={ classnames( className, `bk-testimonial is-${ fontSize }-text is-${ testimonialFontSize }-text has-text-align-${ props.attributes.alignment }`, backgroundClass, textClass, fontSizeClass, {
-					'has-background': backgroundColor || customBackgroundColor,
-					'has-text-color': textColor || customTextColor,
-					[ fontSizeClass ]: fontSizeClass,
-					//[ textClass ]: textClass,
-					//[ backgroundClass ]: backgroundClass,
-				} ) }
-			>
-				<figure className="wp-block-oleti-bk-testimonial__media">
-					{ testimonialImage(
-						props.attributes.imageUrl,
-						props.attributes.imageAlt
-					) }
-				</figure>
-				<blockquote className="bk-testimonial-blockquote">
-					<span
-						//className="bk-testimonial-content"
-						className={ `bk-testimonial-content bk-font-size-${ props.attributes.testimonialFontSize }` }
-					>
-						{ props.attributes.testimonialContent }
-					</span>
-
-					<footer>
-						<h2 className="bk-testimonial-author">
-							{ props.attributes.testimonialAuthor }
-						</h2>
-						<cite className="bk-testimonial-role">
-							{ props.attributes.testimonialRole }
-						</cite>
-					</footer>
-				</blockquote>
-			</div>
-		);
-	},
+	save,
 } );
