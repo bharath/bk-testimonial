@@ -124,10 +124,8 @@ registerBlockType( 'oleti/bk-testimonial', {
 	 * Optional block extended support features.
 	 */
 	supports: {
-		// Add the support for block's alignment (left, center, right, wide, full).
-		align: true,
 		// Pick which alignment options to display ('left', 'right', 'center', 'wide','full').
-		align: [ 'wide','full' ],
+		align: [ 'wide', 'full' ],
 		// Add the support for an anchor link.
 		anchor: true,
 		// Removes support for an HTML mode.

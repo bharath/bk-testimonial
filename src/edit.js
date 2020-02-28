@@ -15,10 +15,7 @@ import { __ } from '@wordpress/i18n';
 
 import { compose } from '@wordpress/compose';
 
-import {
-	Component,
-	Fragment
-} from '@wordpress/element';
+import { Component, Fragment } from '@wordpress/element';
 
 import { Button } from '@wordpress/components';
 
@@ -28,7 +25,7 @@ import {
 	withFontSizes,
 	MediaUpload,
 	AlignmentToolbar,
-	BlockControls
+	BlockControls,
 } from '@wordpress/block-editor';
 
 class BKTestimonialEdit extends Component {
@@ -66,11 +63,7 @@ class BKTestimonialEdit extends Component {
 		const getImageButton = ( openEvent ) => {
 			if ( imageUrl ) {
 				return (
-					<figure
-						className={ classnames(
-							'bk-testimonial__media',
-						) }
-					>
+					<figure className={ classnames( 'bk-testimonial__media' ) }>
 						<img
 							src={ imageUrl }
 							onClick={ openEvent }
@@ -93,7 +86,9 @@ class BKTestimonialEdit extends Component {
 		};
 
 		const classes = classnames(
-			className, `bk-testimonial has-text-align-${ alignment }`, {
+			className,
+			`bk-testimonial has-text-align-${ alignment }`,
+			{
 				'has-background': backgroundColor.color,
 				'has-text-color': textColor.color,
 				[ backgroundColor.class ]: backgroundColor.class,
@@ -117,11 +112,7 @@ class BKTestimonialEdit extends Component {
 						/>
 					</BlockControls>
 				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
+				{ isSelected && <Inspector { ...this.props } /> }
 				<div className={ classes } style={ styles }>
 					<MediaUpload
 						onSelect={ ( media ) => {
@@ -144,7 +135,7 @@ class BKTestimonialEdit extends Component {
 							placeholder="Add Testimonial Content"
 							keepPlaceholderOnFocus
 							style={ {
-								color: textColor
+								color: textColor,
 							} }
 							className="bk-testimonial-content"
 							tagName="span"
@@ -158,7 +149,7 @@ class BKTestimonialEdit extends Component {
 								placeholder="Add Name"
 								keepPlaceholderOnFocus
 								style={ {
-									color: textColor
+									color: textColor,
 								} }
 								className="bk-testimonial-author"
 								tagName="h2"
@@ -171,7 +162,7 @@ class BKTestimonialEdit extends Component {
 								placeholder="Add Role, Company"
 								keepPlaceholderOnFocus
 								style={ {
-									color: textColor
+									color: textColor,
 								} }
 								className="bk-testimonial-role"
 								tagName="cite"

@@ -3,10 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 
-import {
-	Component,
-	Fragment
-} from '@wordpress/element';
+import { Component, Fragment } from '@wordpress/element';
 
 import { compose } from '@wordpress/compose';
 
@@ -16,25 +13,36 @@ import {
 	PanelColorSettings,
 	withColors,
 	FontSizePicker,
-	withFontSizes
+	withFontSizes,
 } from '@wordpress/block-editor';
 
-import {
-	PanelBody,
-	withFallbackStyles
-} from '@wordpress/components';
+import { PanelBody, withFallbackStyles } from '@wordpress/components';
 
 const { getComputedStyle } = window;
 
 const applyFallbackStyles = withFallbackStyles( ( node, ownProps ) => {
-	const { textColor, backgroundColor, fontSize, customFontSize } = ownProps.attributes;
+	const {
+		textColor,
+		backgroundColor,
+		fontSize,
+		customFontSize,
+	} = ownProps.attributes;
 	//avoid the use of querySelector if textColor color is known and verify if node is available.
 	const editableNode = node.querySelector( '[contenteditable="true"]' );
-	const computedStyles = editableNode ? getComputedStyle( editableNode ) : null;
+	const computedStyles = editableNode
+		? getComputedStyle( editableNode )
+		: null;
 	return {
-		fallbackBackgroundColor: backgroundColor || ! computedStyles ? undefined : computedStyles.backgroundColor,
-		fallbackTextColor: textColor || ! computedStyles ? undefined : computedStyles.color,
-		fallbackFontSize: fontSize || customFontSize || ! computedStyles ? undefined : parseInt( computedStyles.fontSize ) || undefined,
+		fallbackBackgroundColor:
+			backgroundColor || ! computedStyles
+				? undefined
+				: computedStyles.backgroundColor,
+		fallbackTextColor:
+			textColor || ! computedStyles ? undefined : computedStyles.color,
+		fallbackFontSize:
+			fontSize || customFontSize || ! computedStyles
+				? undefined
+				: parseInt( computedStyles.fontSize ) || undefined,
 	};
 } );
 
@@ -55,7 +63,10 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Text Settings', 'oleti' ) } className="blocks-font-size">
+					<PanelBody
+						title={ __( 'Text Settings', 'oleti' ) }
+						className="blocks-font-size"
+					>
 						<FontSizePicker
 							label={ 'test' }
 							fallbackFontSize={ fallbackFontSize }

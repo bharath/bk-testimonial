@@ -9,10 +9,10 @@ import classnames from 'classnames';
 import {
 	RichText,
 	getColorClassName,
-	getFontSizeClass
+	getFontSizeClass,
 } from '@wordpress/block-editor';
 
-export default function save ( { className, attributes } ) {
+export default function save( { className, attributes } ) {
 	const {
 		backgroundColor,
 		customBackgroundColor,
@@ -33,11 +33,7 @@ export default function save ( { className, attributes } ) {
 
 		if ( alt ) {
 			return (
-				<img
-					className="bk-testimonial-image"
-					src={ src }
-					alt={ alt }
-				/>
+				<img className="bk-testimonial-image" src={ src } alt={ alt } />
 			);
 		}
 
@@ -57,20 +53,21 @@ export default function save ( { className, attributes } ) {
 		backgroundColor
 	);
 
-	const textClass = getColorClassName(
-		'color',
-		textColor
-	);
+	const textClass = getColorClassName( 'color', textColor );
 
 	const fontSizeClass = getFontSizeClass( fontSize );
 
-	const classes = classnames( className, `bk-testimonial has-text-align-${ alignment }`, {
-		'has-text-color': textColor || customTextColor,
-		'has-background': backgroundColor || customBackgroundColor,
-		[ textClass ]: textClass,
-		[ backgroundClass ]: backgroundClass,
-		[ fontSizeClass ]: fontSizeClass,
-	} );
+	const classes = classnames(
+		className,
+		`bk-testimonial has-text-align-${ alignment }`,
+		{
+			'has-text-color': textColor || customTextColor,
+			'has-background': backgroundColor || customBackgroundColor,
+			[ textClass ]: textClass,
+			[ backgroundClass ]: backgroundClass,
+			[ fontSizeClass ]: fontSizeClass,
+		}
+	);
 
 	const styles = {
 		backgroundColor: backgroundClass ? undefined : customBackgroundColor,
@@ -81,10 +78,7 @@ export default function save ( { className, attributes } ) {
 	return (
 		<div className={ classes } style={ styles }>
 			<figure className="bk-testimonial__media">
-				{ testimonialImage(
-					imageUrl,
-					imageAlt
-				) }
+				{ testimonialImage( imageUrl, imageAlt ) }
 			</figure>
 			<blockquote className="bk-testimonial-blockquote">
 				<RichText.Content
@@ -107,4 +101,4 @@ export default function save ( { className, attributes } ) {
 			</blockquote>
 		</div>
 	);
-};
+}
