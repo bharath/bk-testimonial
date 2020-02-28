@@ -307,9 +307,21 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
     textColor: {
       type: 'string'
     },
+    customBackgroundColor: {
+      type: 'string'
+    },
+    customTextColor: {
+      type: 'string'
+    },
     testimonialFontSize: {
       type: 'number',
       default: 24
+    },
+    fontSize: {
+      type: 'string'
+    },
+    customFontSize: {
+      type: 'number'
     }
   },
 
@@ -332,8 +344,6 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
    * @return {WPElement} Element to render.
    */
   edit: function edit(props) {
-    var _classnames;
-
     var _props$attributes = props.attributes,
         testimonialContent = _props$attributes.testimonialContent,
         backgroundColor = _props$attributes.backgroundColor,
@@ -342,6 +352,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
         customBackgroundColor = _props$attributes.customBackgroundColor,
         customTextColor = _props$attributes.customTextColor,
         testimonialFontSize = _props$attributes.testimonialFontSize,
+        fontSize = _props$attributes.fontSize,
+        customFontSize = _props$attributes.customFontSize,
         className = props.className;
 
     var onChangeAlignment = function onChangeAlignment(newAlignment) {
@@ -367,17 +379,20 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
           className: "button button-large"
         }, "Add Image"));
       }
-    };
+    }; //const fontSizeClass = fontSize && `is-${ fontSize }-text`;
 
-    var backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('background-color', backgroundColor);
-    var textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor);
+
+    var fontSizeClass = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["getFontSizeClass"])(fontSize);
+    var backgroundClass = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["getColorClassName"])('background-color', backgroundColor);
+    var textClass = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["getColorClassName"])('color', textColor);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
       style: {
         backgroundColor: backgroundColor
       },
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, "bk-testimonial has-text-align-".concat(props.attributes.alignment), (_classnames = {
-        'has-background': backgroundClass || customBackgroundColor
-      }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundClass, backgroundClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-text-color', textClass || customTextColor), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textClass, textClass), _classnames))
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, "bk-testimonial is-".concat(fontSize, "-text is-").concat(testimonialFontSize, "-text has-text-align-").concat(props.attributes.alignment), backgroundClass, textClass, fontSizeClass, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({
+        'has-background': backgroundColor || customBackgroundColor,
+        'has-text-color': textColor || customTextColor
+      }, fontSizeClass, fontSizeClass))
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["PanelBody"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Text settings')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__["RangeControl"], {
@@ -391,6 +406,11 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       min: 24,
       max: 32,
       step: 1
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(FontSizePicker, {
+      label: 'test',
+      fallbackFontSize: fallbackFontSize,
+      value: fontSize.size,
+      onChange: setFontSize
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["PanelColorSettings"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Color settings', 'oleti'),
       initialOpen: false,
@@ -438,8 +458,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       value: testimonialContent,
       multiline: "p",
       placeholder: "Add Testimonial Content",
+      keepPlaceholderOnFocus: true,
       style: {
-        textAlign: alignment,
+        //textAlign: alignment,
         color: textColor
       },
       className: "bk-testimonial-content bk-font-size-".concat(props.attributes.testimonialFontSize),
@@ -452,8 +473,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       },
       value: props.attributes.testimonialAuthor,
       placeholder: "Add Name",
+      keepPlaceholderOnFocus: true,
       style: {
-        textAlign: alignment,
+        //textAlign: alignment,
         color: textColor
       },
       className: "bk-testimonial-author",
@@ -466,8 +488,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       },
       value: props.attributes.testimonialRole,
       placeholder: "Add Role, Company",
+      keepPlaceholderOnFocus: true,
       style: {
-        textAlign: alignment,
+        //textAlign: alignment,
         color: textColor
       },
       className: "bk-testimonial-role",
@@ -484,15 +507,16 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
    * @return {WPElement} Element to render.
    */
   save: function save(props) {
-    var _classnames2;
-
     var _props$attributes2 = props.attributes,
         testimonialContent = _props$attributes2.testimonialContent,
         backgroundColor = _props$attributes2.backgroundColor,
         textColor = _props$attributes2.textColor,
         alignment = _props$attributes2.alignment,
         customBackgroundColor = _props$attributes2.customBackgroundColor,
-        customTextColor = _props$attributes2.customTextColor;
+        customTextColor = _props$attributes2.customTextColor,
+        fontSize = _props$attributes2.fontSize,
+        customFontSize = _props$attributes2.customFontSize,
+        className = props.className;
 
     var testimonialImage = function testimonialImage(src, alt) {
       if (!src) return null;
@@ -514,12 +538,14 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('ole
       });
     };
 
-    var backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('background-color', backgroundColor);
-    var textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor);
+    var fontSizeClass = fontSize && "is-".concat(fontSize, "-text");
+    var backgroundClass = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["getColorClassName"])('background-color', backgroundColor);
+    var textClass = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["getColorClassName"])('color', textColor);
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("bk-testimonial has-text-align-".concat(props.attributes.alignment), (_classnames2 = {
-        'has-background': backgroundClass || customBackgroundColor
-      }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames2, backgroundClass, backgroundClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames2, 'has-text-color', textClass || customTextColor), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames2, textClass, textClass), _classnames2))
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, "bk-testimonial is-".concat(fontSize, "-text is-").concat(testimonialFontSize, "-text has-text-align-").concat(props.attributes.alignment), backgroundClass, textClass, fontSizeClass, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({
+        'has-background': backgroundColor || customBackgroundColor,
+        'has-text-color': textColor || customTextColor
+      }, fontSizeClass, fontSizeClass))
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("figure", {
       className: "wp-block-oleti-bk-testimonial__media"
     }, testimonialImage(props.attributes.imageUrl, props.attributes.imageAlt)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("blockquote", {
