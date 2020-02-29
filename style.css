@@ -17,10 +17,21 @@
 	margin-bottom: 30px;
 }
 
-.wp-block-oleti-bk-testimonial__button {
-	background: #f5f5f5;
-	padding: 30px;
+.bk-testimonial__button {
 	display: table;
+	margin: 0 auto;
+}
+
+.bk-testimonial__button button {
+	width: 75px;
+    height: 75px;
+    padding: 0;
+    border-radius: 100%;
+    background: #ddd;
+}
+
+.bk-testimonial__button button svg {
+	width: 30px;
 	margin: 0 auto;
 }
 

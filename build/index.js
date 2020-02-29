@@ -491,11 +491,21 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
           }));
         } else {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("div", {
-            className: "wp-block-oleti-bk-testimonial__button"
+            className: "bk-testimonial__button"
           }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["Button"], {
-            onClick: openEvent,
-            className: "button button-large"
-          }, "Add Image"));
+            onClick: openEvent
+          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("svg", {
+            viewBox: "0 0 512 376",
+            xmlns: "http://www.w3.org/2000/svg"
+          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("path", {
+            d: "M0 0v376h512V0H0zm480 344H32V32h448v312z"
+          }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("circle", {
+            cx: "409.1",
+            cy: "102.9",
+            r: "40.9"
+          }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("path", {
+            d: "M480 344H32l86.3-164.2 21.7 11.3 49-77.3 100 113.1 8.9-9.3 17.1 22.3 26-46.4 52.9 71.2 15.1-15.9z"
+          }))));
         }
       };
 
@@ -551,7 +561,7 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
           });
         },
         value: testimonialAuthor,
-        placeholder: placeholder || Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('— Add Name'),
+        placeholder: placeholder || Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Add Name'),
         keepPlaceholderOnFocus: true,
         style: {
           color: textColor

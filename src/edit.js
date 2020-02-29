@@ -70,12 +70,11 @@ class BKTestimonialEdit extends Component {
 				);
 			} else {
 				return (
-					<div className="wp-block-oleti-bk-testimonial__button">
+					<div className="bk-testimonial__button">
 						<Button
 							onClick={ openEvent }
-							className="button button-large"
 						>
-							Add Image
+							<svg viewBox="0 0 512 376" xmlns="http://www.w3.org/2000/svg"><path d="M0 0v376h512V0H0zm480 344H32V32h448v312z"></path><circle cx="409.1" cy="102.9" r="40.9"></circle><path d="M480 344H32l86.3-164.2 21.7 11.3 49-77.3 100 113.1 8.9-9.3 17.1 22.3 26-46.4 52.9 71.2 15.1-15.9z"></path></svg>
 						</Button>
 					</div>
 				);
@@ -143,7 +142,7 @@ class BKTestimonialEdit extends Component {
 									setAttributes( { testimonialAuthor } )
 								}
 								value={ testimonialAuthor }
-								placeholder={ placeholder || __( '— Add Name' ) }
+								placeholder={ placeholder || __( 'Add Name' ) }
 								keepPlaceholderOnFocus
 								style={ {
 									color: textColor,
