@@ -84,18 +84,21 @@ export default function save( { className, attributes } ) {
 				<RichText.Content
 					value={ testimonialContent }
 					className="bk-testimonial-content"
-					tagName="span"
+					tagName="div"
+					style={ {
+						color: textClass ? undefined : customTextColor,
+					} }
 				/>
 				<footer>
 					<RichText.Content
 						value={ testimonialAuthor }
 						className="bk-testimonial-author"
-						tagName="h2"
+						tagName="cite"
 					/>
 					<RichText.Content
 						value={ testimonialRole }
 						className="bk-testimonial-role"
-						tagName="cite"
+						tagName="small"
 					/>
 				</footer>
 			</blockquote>

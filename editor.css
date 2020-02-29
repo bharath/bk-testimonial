@@ -8,12 +8,13 @@
 	border: 1px dotted #0073e5;
 }
 
-.editor-styles-wrapper h2.bk-testimonial-author {
-	font-size: 20px;
+.editor-styles-wrapper cite.bk-testimonial-author {
+	font-size: 18px;
 	margin-bottom: 5px;
 	font-style: normal;
+	font-weight: normal;
 }
 
-.bk-testimonial-blockquote cite {
+.bk-testimonial-blockquote .bk-testimonial-author {
 	display: block;
 }

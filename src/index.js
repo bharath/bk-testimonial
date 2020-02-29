@@ -57,8 +57,12 @@ registerBlockType( 'oleti/bk-testimonial', {
 		// Mark style as default.
 		{
 			name: 'default',
-			label: __( 'Image on Top' ),
+			label: __( 'Image Default' ),
 			isDefault: true,
+		},
+		{
+			name: 'image-centered',
+			label: __( 'Image Centered' ),
 		},
 		{
 			name: 'image-on-left',
@@ -101,9 +105,11 @@ registerBlockType( 'oleti/bk-testimonial', {
 		},
 		backgroundColor: {
 			type: 'string',
+			default: '#000000',
 		},
 		textColor: {
 			type: 'string',
+			default: '#ffffff',
 		},
 		customBackgroundColor: {
 			type: 'string',

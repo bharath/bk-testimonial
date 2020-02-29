@@ -134,7 +134,7 @@ class BKTestimonialEdit extends Component {
 								color: textColor,
 							} }
 							className="bk-testimonial-content"
-							tagName="span"
+							tagName="div"
 						/>
 						<footer>
 							<RichText
@@ -145,10 +145,10 @@ class BKTestimonialEdit extends Component {
 								placeholder={ placeholder || __( 'Add Name' ) }
 								keepPlaceholderOnFocus
 								style={ {
-									color: textColor,
+									color: textColor.color,
 								} }
 								className="bk-testimonial-author"
-								tagName="h2"
+								tagName="cite"
 							/>
 							<RichText
 								onChange={ ( testimonialRole ) =>
@@ -161,7 +161,7 @@ class BKTestimonialEdit extends Component {
 									color: textColor,
 								} }
 								className="bk-testimonial-role"
-								tagName="cite"
+								tagName="small"
 							/>
 						</footer>
 					</blockquote>
