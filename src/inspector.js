@@ -64,7 +64,7 @@ class Inspector extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'Text Settings', 'oleti' ) }
+						title={ __( 'Font Settings', 'oleti' ) }
 						className="blocks-font-size"
 					>
 						<FontSizePicker

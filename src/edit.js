@@ -4,21 +4,12 @@
 import classnames from 'classnames';
 
 /**
- * Internal dependencies
- */
-import Inspector from './inspector';
-
-/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-
 import { compose } from '@wordpress/compose';
-
 import { Component, Fragment } from '@wordpress/element';
-
 import { Button } from '@wordpress/components';
-
 import {
 	RichText,
 	withColors,
@@ -27,6 +18,11 @@ import {
 	AlignmentToolbar,
 	BlockControls,
 } from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
+import Inspector from './inspector';
 
 class BKTestimonialEdit extends Component {
 	constructor() {
@@ -52,6 +48,7 @@ class BKTestimonialEdit extends Component {
 			testimonialContent,
 			testimonialAuthor,
 			testimonialRole,
+			placeholder,
 		} = attributes;
 
 		const onChangeAlignment = ( newAlignment ) => {
@@ -132,7 +129,7 @@ class BKTestimonialEdit extends Component {
 							}
 							value={ testimonialContent }
 							multiline="p"
-							placeholder="Add Testimonial Content"
+							placeholder={ placeholder || __( 'Add Testimonial Content…' ) }
 							keepPlaceholderOnFocus
 							style={ {
 								color: textColor,
@@ -146,7 +143,7 @@ class BKTestimonialEdit extends Component {
 									setAttributes( { testimonialAuthor } )
 								}
 								value={ testimonialAuthor }
-								placeholder="Add Name"
+								placeholder={ placeholder || __( '— Add Name' ) }
 								keepPlaceholderOnFocus
 								style={ {
 									color: textColor,
@@ -159,7 +156,7 @@ class BKTestimonialEdit extends Component {
 									setAttributes( { testimonialRole } )
 								}
 								value={ testimonialRole }
-								placeholder="Add Role, Company"
+								placeholder={ placeholder || __( 'Add Role, Company' ) }
 								keepPlaceholderOnFocus
 								style={ {
 									color: textColor,
