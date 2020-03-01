@@ -77,12 +77,12 @@
 }
 
 .wp-block-oleti-bk-testimonial.has-quote-image .bk-testimonial-quote {
-    display: block;
+	display: block;
 }
 
 .has-quote-image.is-style-image-centered .bk-testimonial-quote {
-    margin: 0 auto 20px;
-    display: table;
+	margin: 0 auto 20px;
+	display: table;
 }
 
 .bk-testimonial.is-style-image-centered blockquote {

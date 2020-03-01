@@ -16,7 +16,7 @@ import {
 import {
 	PanelBody,
 	withFallbackStyles,
-	ToggleControl
+	ToggleControl,
 } from '@wordpress/components';
 
 const { getComputedStyle } = window;
@@ -63,37 +63,55 @@ class Inspector extends Component {
 			setAttributes,
 		} = this.props;
 
-		const {
-			borderRadius,
-			quoteImage,
-			imageUrl,
-		} = attributes;
+		const { borderRadius, quoteImage, imageUrl } = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody
-						title={ __( 'Misc Settings', 'oleti' ) }
-					>
+					<PanelBody title={ __( 'Misc Settings', 'oleti' ) }>
 						{ imageUrl && (
 							<ToggleControl
 								/* translators: visually stack buttons one on top of another */
 								label={ __( 'Border Radius', 'oleti' ) }
 								checked={ borderRadius }
-								onChange={ () => setAttributes( {
-									borderRadius: ! borderRadius,
-								} ) }
-								help={ !! borderRadius ? __( 'Border Radius added to Image.', 'oleti' ) : __( 'Toggle to add Border Radius to image.', 'oleti' ) }
+								onChange={ () =>
+									setAttributes( {
+										borderRadius: ! borderRadius,
+									} )
+								}
+								help={
+									!! borderRadius
+										? __(
+												'Border Radius added to Image.',
+												'oleti'
+										  )
+										: __(
+												'Toggle to add Border Radius to image.',
+												'oleti'
+										  )
+								}
 							/>
 						) }
 						<ToggleControl
 							/* translators: visually stack buttons one on top of another */
 							label={ __( 'Quote Image', 'oleti' ) }
 							checked={ quoteImage }
-							onChange={ () => setAttributes( {
-								quoteImage: ! quoteImage,
-							} ) }
-							help={ !! quoteImage ? __( 'Quote Image added by default. Toggle to remove it.', 'oleti' ) : __( 'Toggle to add Quote Image.', 'oleti' ) }
+							onChange={ () =>
+								setAttributes( {
+									quoteImage: ! quoteImage,
+								} )
+							}
+							help={
+								!! quoteImage
+									? __(
+											'Quote Image added by default. Toggle to remove it.',
+											'oleti'
+									  )
+									: __(
+											'Toggle to add Quote Image.',
+											'oleti'
+									  )
+							}
 						/>
 					</PanelBody>
 					<PanelBody

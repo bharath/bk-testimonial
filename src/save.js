@@ -90,7 +90,11 @@ export default function save( { className, attributes } ) {
 				{ testimonialImage( imageUrl, imageAlt ) }
 			</figure>
 			<blockquote className="bk-testimonial-blockquote">
-				<Dashicon icon="editor-quote" size={ dashiconSize } className="bk-testimonial-quote" />
+				<Dashicon
+					icon="editor-quote"
+					size={ dashiconSize }
+					className="bk-testimonial-quote"
+				/>
 				<RichText.Content
 					value={ testimonialContent }
 					className="bk-testimonial-content"

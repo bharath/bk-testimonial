@@ -109,10 +109,6 @@ class BKTestimonialEdit extends Component {
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
-		const svgstyles = {
-			fill: textColor.color,
-		};
-
 		// Dashicons should be 20x20 by default.
 		const dashiconSize = size || 32;
 
@@ -140,7 +136,11 @@ class BKTestimonialEdit extends Component {
 						render={ ( { open } ) => getImageButton( open ) }
 					/>
 					<blockquote className="bk-testimonial-blockquote">
-						<Dashicon icon="editor-quote" size={ dashiconSize } className="bk-testimonial-quote" />
+						<Dashicon
+							icon="editor-quote"
+							size={ dashiconSize }
+							className="bk-testimonial-quote"
+						/>
 						<RichText
 							onChange={ ( testimonialContent ) =>
 								setAttributes( { testimonialContent } )
