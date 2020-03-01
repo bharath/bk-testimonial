@@ -68,13 +68,14 @@ class Inspector extends Component {
 
 		const {
 			borderRadius,
+			quoteImage,
 		} = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'Image Settings', 'oleti' ) }
+						title={ __( 'Misc Settings', 'oleti' ) }
 					>
 						<ToggleControl
 							/* translators: visually stack buttons one on top of another */
@@ -83,7 +84,16 @@ class Inspector extends Component {
 							onChange={ () => setAttributes( {
 								borderRadius: ! borderRadius,
 							} ) }
-							help={ !! borderRadius ? __( 'Border Radius Added to Image.', 'oleti' ) : __( 'Toggle to add border radius to image.', 'oleti' ) }
+							help={ !! borderRadius ? __( 'Border Radius added to Image.', 'oleti' ) : __( 'Toggle to add Border Radius to image.', 'oleti' ) }
+						/>
+						<ToggleControl
+							/* translators: visually stack buttons one on top of another */
+							label={ __( 'Quote Image', 'oleti' ) }
+							checked={ quoteImage }
+							onChange={ () => setAttributes( {
+								quoteImage: ! quoteImage,
+							} ) }
+							help={ !! quoteImage ? __( 'Quote Image added by default. Toggle to remove it.', 'oleti' ) : __( 'Toggle to add Quote Image.', 'oleti' ) }
 						/>
 					</PanelBody>
 					<PanelBody

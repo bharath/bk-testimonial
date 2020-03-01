@@ -72,7 +72,15 @@
 	fill: currentColor;
 }
 
-.wp-block-oleti-bk-testimonial.is-style-image-centered .bk-testimonial-quote {
+.wp-block-oleti-bk-testimonial .bk-testimonial-quote {
+	display: none;
+}
+
+.wp-block-oleti-bk-testimonial.has-quote-image .bk-testimonial-quote {
+    display: block;
+}
+
+.has-quote-image.is-style-image-centered .bk-testimonial-quote {
     margin: 0 auto 20px;
     display: table;
 }

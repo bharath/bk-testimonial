@@ -51,6 +51,7 @@ class BKTestimonialEdit extends Component {
 			placeholder,
 			size,
 			borderRadius,
+			quoteImage,
 		} = attributes;
 
 		const onChangeAlignment = ( newAlignment ) => {
@@ -98,6 +99,7 @@ class BKTestimonialEdit extends Component {
 				[ backgroundColor.class ]: backgroundColor.class,
 				[ textColor.class ]: textColor.class,
 				'has-border-radius': borderRadius,
+				'has-quote-image': quoteImage,
 			}
 		);
 

@@ -474,7 +474,8 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
           testimonialRole = attributes.testimonialRole,
           placeholder = attributes.placeholder,
           size = attributes.size,
-          borderRadius = attributes.borderRadius;
+          borderRadius = attributes.borderRadius,
+          quoteImage = attributes.quoteImage;
 
       var onChangeAlignment = function onChangeAlignment(newAlignment) {
         setAttributes({
@@ -515,7 +516,7 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
       var classes = classnames__WEBPACK_IMPORTED_MODULE_7___default()(className, "bk-testimonial has-text-align-".concat(alignment), (_classnames = {
         'has-background': backgroundColor.color,
         'has-text-color': textColor.color
-      }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundColor.class, backgroundColor.class), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textColor.class, textColor.class), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-border-radius', borderRadius), _classnames));
+      }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundColor.class, backgroundColor.class), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textColor.class, textColor.class), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-border-radius', borderRadius), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-quote-image', quoteImage), _classnames));
       var styles = {
         backgroundColor: backgroundColor.color,
         color: textColor.color,
@@ -739,16 +740,13 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('ole
     customFontSize: {
       type: 'number'
     },
-    toggleControl: {
-      type: "boolean"
-    },
-    highContrast: {
-      type: 'boolean',
-      default: false
-    },
     borderRadius: {
       type: 'boolean',
       default: false
+    },
+    quoteImage: {
+      type: 'boolean',
+      default: true
     }
   },
 
@@ -879,9 +877,10 @@ var Inspector = /*#__PURE__*/function (_Component) {
           fontSize = _this$props.fontSize,
           attributes = _this$props.attributes,
           setAttributes = _this$props.setAttributes;
-      var borderRadius = attributes.borderRadius;
+      var borderRadius = attributes.borderRadius,
+          quoteImage = attributes.quoteImage;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_9__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["PanelBody"], {
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Image Settings', 'oleti')
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Misc Settings', 'oleti')
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["ToggleControl"]
       /* translators: visually stack buttons one on top of another */
       , {
@@ -892,7 +891,18 @@ var Inspector = /*#__PURE__*/function (_Component) {
             borderRadius: !borderRadius
           });
         },
-        help: !!borderRadius ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Border Radius Added to Image.', 'oleti') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Toggle to add border radius to image.', 'oleti')
+        help: !!borderRadius ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Border Radius added to Image.', 'oleti') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Toggle to add Border Radius to image.', 'oleti')
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["ToggleControl"]
+      /* translators: visually stack buttons one on top of another */
+      , {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Quote Image', 'oleti'),
+        checked: quoteImage,
+        onChange: function onChange() {
+          return setAttributes({
+            quoteImage: !quoteImage
+          });
+        },
+        help: !!quoteImage ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Quote Image added by default. Toggle to remove it.', 'oleti') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Toggle to add Quote Image.', 'oleti')
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["PanelBody"], {
         title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Font Settings', 'oleti'),
         initialOpen: false,
@@ -985,7 +995,8 @@ function save(_ref) {
       testimonialAuthor = attributes.testimonialAuthor,
       testimonialRole = attributes.testimonialRole,
       size = attributes.size,
-      borderRadius = attributes.borderRadius;
+      borderRadius = attributes.borderRadius,
+      quoteImage = attributes.quoteImage;
 
   var testimonialImage = function testimonialImage(src, alt) {
     if (!src) return null;
@@ -1013,7 +1024,7 @@ function save(_ref) {
   var classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "bk-testimonial has-text-align-".concat(alignment), (_classnames = {
     'has-text-color': textColor || customTextColor,
     'has-background': backgroundColor || customBackgroundColor
-  }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textClass, textClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundClass, backgroundClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, fontSizeClass, fontSizeClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-border-radius', borderRadius), _classnames));
+  }, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, textClass, textClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, backgroundClass, backgroundClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, fontSizeClass, fontSizeClass), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-border-radius', borderRadius), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_classnames, 'has-quote-image', quoteImage), _classnames));
   var styles = {
     backgroundColor: backgroundClass ? undefined : customBackgroundColor,
     color: textClass ? undefined : customTextColor,

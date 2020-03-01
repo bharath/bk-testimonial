@@ -29,6 +29,7 @@ export default function save( { className, attributes } ) {
 		testimonialRole,
 		size,
 		borderRadius,
+		quoteImage,
 	} = attributes;
 
 	const testimonialImage = ( src, alt ) => {
@@ -70,6 +71,7 @@ export default function save( { className, attributes } ) {
 			[ backgroundClass ]: backgroundClass,
 			[ fontSizeClass ]: fontSizeClass,
 			'has-border-radius': borderRadius,
+			'has-quote-image': quoteImage,
 		}
 	);
 
