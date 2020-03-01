@@ -1,5 +1,5 @@
-# bk-testimonial
-A Testimonial Block for Gutenberg with custom styles
+# Testimonial Block
+A Testimonial Block for Gutenberg with custom styles. Developed as a project for Zac Gordon's [JavaScript & WordPress Bootcamp](https://javascriptforwp.com/bootcamp/wordpress/).
 
-Demo Photo
-Photo by Jake Nackos on Unsplash
+Contributors & Developers
+“Testimonial Block” is open source software.
