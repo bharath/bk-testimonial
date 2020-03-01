@@ -4,4 +4,4 @@ A Testimonial Block for Gutenberg with custom styles. Developed as a final proje
 
 Testimonial Block is maintained and developed by [Bharath](https://github.com/bharath/).
 
-“Testimonial Block” is open source software.
+Testimonial Block is open source software.
