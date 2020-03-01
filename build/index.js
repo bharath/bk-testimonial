@@ -878,10 +878,11 @@ var Inspector = /*#__PURE__*/function (_Component) {
           attributes = _this$props.attributes,
           setAttributes = _this$props.setAttributes;
       var borderRadius = attributes.borderRadius,
-          quoteImage = attributes.quoteImage;
+          quoteImage = attributes.quoteImage,
+          imageUrl = attributes.imageUrl;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_9__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["PanelBody"], {
         title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Misc Settings', 'oleti')
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["ToggleControl"]
+      }, imageUrl && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["ToggleControl"]
       /* translators: visually stack buttons one on top of another */
       , {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Border Radius', 'oleti'),

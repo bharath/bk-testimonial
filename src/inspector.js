@@ -69,6 +69,7 @@ class Inspector extends Component {
 		const {
 			borderRadius,
 			quoteImage,
+			imageUrl,
 		} = attributes;
 
 		return (
@@ -77,15 +78,17 @@ class Inspector extends Component {
 					<PanelBody
 						title={ __( 'Misc Settings', 'oleti' ) }
 					>
-						<ToggleControl
-							/* translators: visually stack buttons one on top of another */
-							label={ __( 'Border Radius', 'oleti' ) }
-							checked={ borderRadius }
-							onChange={ () => setAttributes( {
-								borderRadius: ! borderRadius,
-							} ) }
-							help={ !! borderRadius ? __( 'Border Radius added to Image.', 'oleti' ) : __( 'Toggle to add Border Radius to image.', 'oleti' ) }
-						/>
+						{ imageUrl && (
+							<ToggleControl
+								/* translators: visually stack buttons one on top of another */
+								label={ __( 'Border Radius', 'oleti' ) }
+								checked={ borderRadius }
+								onChange={ () => setAttributes( {
+									borderRadius: ! borderRadius,
+								} ) }
+								help={ !! borderRadius ? __( 'Border Radius added to Image.', 'oleti' ) : __( 'Toggle to add Border Radius to image.', 'oleti' ) }
+							/>
+						) }
 						<ToggleControl
 							/* translators: visually stack buttons one on top of another */
 							label={ __( 'Quote Image', 'oleti' ) }
