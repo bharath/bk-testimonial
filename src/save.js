@@ -11,6 +11,7 @@ import {
 	getColorClassName,
 	getFontSizeClass,
 } from '@wordpress/block-editor';
+import { Dashicon } from '@wordpress/components';
 
 export default function save( { className, attributes } ) {
 	const {
@@ -26,6 +27,7 @@ export default function save( { className, attributes } ) {
 		testimonialContent,
 		testimonialAuthor,
 		testimonialRole,
+		size,
 	} = attributes;
 
 	const testimonialImage = ( src, alt ) => {
@@ -75,12 +77,16 @@ export default function save( { className, attributes } ) {
 		fontSize: fontSizeClass ? undefined : customFontSize,
 	};
 
+	// Dashicons should be 20x20 by default.
+	const dashiconSize = size || 32;
+
 	return (
 		<div className={ classes } style={ styles }>
 			<figure className="bk-testimonial__media">
 				{ testimonialImage( imageUrl, imageAlt ) }
 			</figure>
 			<blockquote className="bk-testimonial-blockquote">
+				<Dashicon icon="editor-quote" size={ dashiconSize } className="bk-testimonial-quote" />
 				<RichText.Content
 					value={ testimonialContent }
 					className="bk-testimonial-content"

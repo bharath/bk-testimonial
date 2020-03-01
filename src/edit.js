@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import { Component, Fragment } from '@wordpress/element';
-import { Button } from '@wordpress/components';
+import { Button, Dashicon } from '@wordpress/components';
 import {
 	RichText,
 	withColors,
@@ -49,6 +49,7 @@ class BKTestimonialEdit extends Component {
 			testimonialAuthor,
 			testimonialRole,
 			placeholder,
+			size,
 		} = attributes;
 
 		const onChangeAlignment = ( newAlignment ) => {
@@ -104,6 +105,13 @@ class BKTestimonialEdit extends Component {
 			fontSize: fontSize.size ? fontSize.size + 'px' : undefined,
 		};
 
+		const svgstyles = {
+			fill: textColor.color,
+		};
+
+		// Dashicons should be 20x20 by default.
+		const dashiconSize = size || 32;
+
 		return (
 			<Fragment>
 				{ isSelected && (
@@ -128,6 +136,7 @@ class BKTestimonialEdit extends Component {
 						render={ ( { open } ) => getImageButton( open ) }
 					/>
 					<blockquote className="bk-testimonial-blockquote">
+						<Dashicon icon="editor-quote" size={ dashiconSize } className="bk-testimonial-quote" />
 						<RichText
 							onChange={ ( testimonialContent ) =>
 								setAttributes( { testimonialContent } )
