@@ -2,7 +2,11 @@
 	"name": "bk-testimonial",
 	"version": "0.1.0",
 	"description": "Testimonial block for Gutenberg",
-	"author": "The WordPress Contributors",
+	"author": "Bharath",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bharath/bk-testimonial"
+	},
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
