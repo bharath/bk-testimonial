@@ -150,6 +150,10 @@
 }
 */
 
+.bk-testimonial.has-border-radius .bk-testimonial-image {
+	border-radius: 100%;
+}
+
 .bk-testimonial-author,
 .entry-content .bk-testimonial-author {
 	font-size: 18px;

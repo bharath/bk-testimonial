@@ -16,7 +16,11 @@ import {
 	withFontSizes,
 } from '@wordpress/block-editor';
 
-import { PanelBody, withFallbackStyles } from '@wordpress/components';
+import {
+	PanelBody,
+	withFallbackStyles,
+	ToggleControl
+} from '@wordpress/components';
 
 const { getComputedStyle } = window;
 
@@ -58,13 +62,33 @@ class Inspector extends Component {
 			fallbackTextColor,
 			fallbackBackgroundColor,
 			fontSize,
+			attributes,
+			setAttributes,
 		} = this.props;
+
+		const {
+			borderRadius,
+		} = attributes;
 
 		return (
 			<Fragment>
 				<InspectorControls>
 					<PanelBody
+						title={ __( 'Image Settings', 'oleti' ) }
+					>
+						<ToggleControl
+							/* translators: visually stack buttons one on top of another */
+							label={ __( 'Border Radius', 'oleti' ) }
+							checked={ borderRadius }
+							onChange={ () => setAttributes( {
+								borderRadius: ! borderRadius,
+							} ) }
+							help={ !! borderRadius ? __( 'Border Radius Added to Image.', 'oleti' ) : __( 'Toggle to add border radius to image.', 'oleti' ) }
+						/>
+					</PanelBody>
+					<PanelBody
 						title={ __( 'Font Settings', 'oleti' ) }
+						initialOpen={ false }
 						className="blocks-font-size"
 					>
 						<FontSizePicker

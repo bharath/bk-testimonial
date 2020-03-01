@@ -123,6 +123,17 @@ registerBlockType( 'oleti/bk-testimonial', {
 		customFontSize: {
 			type: 'number',
 		},
+		toggleControl: {
+			type: "boolean"
+		},
+		highContrast: {
+			type: 'boolean',
+			default: false,
+		},
+		borderRadius: {
+			type: 'boolean',
+			default: false,
+		},
 	},
 
 	/**

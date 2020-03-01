@@ -50,6 +50,7 @@ class BKTestimonialEdit extends Component {
 			testimonialRole,
 			placeholder,
 			size,
+			borderRadius,
 		} = attributes;
 
 		const onChangeAlignment = ( newAlignment ) => {
@@ -96,6 +97,7 @@ class BKTestimonialEdit extends Component {
 				'has-text-color': textColor.color,
 				[ backgroundColor.class ]: backgroundColor.class,
 				[ textColor.class ]: textColor.class,
+				'has-border-radius': borderRadius,
 			}
 		);
 

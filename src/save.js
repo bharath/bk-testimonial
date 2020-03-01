@@ -28,6 +28,7 @@ export default function save( { className, attributes } ) {
 		testimonialAuthor,
 		testimonialRole,
 		size,
+		borderRadius,
 	} = attributes;
 
 	const testimonialImage = ( src, alt ) => {
@@ -68,6 +69,7 @@ export default function save( { className, attributes } ) {
 			[ textClass ]: textClass,
 			[ backgroundClass ]: backgroundClass,
 			[ fontSizeClass ]: fontSizeClass,
+			'has-border-radius': borderRadius,
 		}
 	);
 
