@@ -3,3 +3,11 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+
+.editor-styles-wrapper cite.bk-testimonial-author {
+	font-size: 18px;
+	margin-bottom: 5px;
+	font-style: normal;
+	font-weight: 400;
+	display: block;
+}
