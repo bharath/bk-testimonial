@@ -78,6 +78,7 @@
 
 .wp-block-oleti-bk-testimonial.has-quote-image .bk-testimonial-quote {
 	display: block;
+	margin-bottom: 15px;
 }
 
 .has-quote-image.is-style-image-centered .bk-testimonial-quote {
@@ -105,16 +106,6 @@
 	font-style: italic;
 	margin-bottom: 0;
 }
-
-/*
-.wp-block-oleti-bk-testimonial .bk-testimonial-content:before {
-	position: absolute;
-	content: open-quote;
-	font-size: 4em;
-	margin-left: -0.6em;
-	margin-top: -0.4em;
-}
-*/
 
 .bk-testimonial blockquote .bk-testimonial-content {
 	margin-bottom: 20px;
@@ -147,16 +138,6 @@
 	margin: 0 auto;
 	width: 100%;
 }
-
-/*
-.is-style-image-on-left .bk-testimonial__media img {
-	padding: 0 0 0 30px;
-}
-
-.is-style-image-on-right .bk-testimonial__media img {
-	padding: 0 30px 0 0;
-}
-*/
 
 .bk-testimonial.has-border-radius .bk-testimonial-image {
 	border-radius: 100%;
