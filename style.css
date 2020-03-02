@@ -173,6 +173,7 @@
 .bk-testimonial-blockquote .bk-testimonial-author {
 	margin-top: 0;
 	display: block;
+	color: inherit !important;
 }
 
 .bk-testimonial-role {

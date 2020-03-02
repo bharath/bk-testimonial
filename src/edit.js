@@ -151,9 +151,6 @@ class BKTestimonialEdit extends Component {
 								placeholder || __( 'Add Testimonial Content…' )
 							}
 							keepPlaceholderOnFocus
-							style={ {
-								color: textColor,
-							} }
 							className="bk-testimonial-content"
 							tagName="div"
 						/>
@@ -165,9 +162,6 @@ class BKTestimonialEdit extends Component {
 								value={ testimonialAuthor }
 								placeholder={ placeholder || __( 'Add Name' ) }
 								keepPlaceholderOnFocus
-								style={ {
-									color: textColor.color,
-								} }
 								className="bk-testimonial-author"
 								tagName="cite"
 							/>
@@ -180,9 +174,6 @@ class BKTestimonialEdit extends Component {
 									placeholder || __( 'Add Role, Company' )
 								}
 								keepPlaceholderOnFocus
-								style={ {
-									color: textColor,
-								} }
 								className="bk-testimonial-role"
 								tagName="small"
 							/>
