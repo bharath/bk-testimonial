@@ -895,9 +895,7 @@ var Inspector = /*#__PURE__*/function (_Component) {
           setAttributes = _this$props.setAttributes;
       var borderRadius = attributes.borderRadius,
           quoteImage = attributes.quoteImage,
-          imageUrl = attributes.imageUrl,
-          paddingSize = attributes.paddingSize,
-          marginSize = attributes.marginSize;
+          imageUrl = attributes.imageUrl;
 
       var updateSpacing = function updateSpacing(size, dimensionAttr) {
         setAttributes(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1___default()({}, dimensionAttr, size));
@@ -916,7 +914,8 @@ var Inspector = /*#__PURE__*/function (_Component) {
         onChange: Object(lodash__WEBPACK_IMPORTED_MODULE_8__["partialRight"])(updateSpacing, 'marginSize'),
         help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Adjust spacing on the sides of the block.')
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["PanelBody"], {
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Misc Settings', 'oleti')
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Misc Settings', 'oleti'),
+        initialOpen: false
       }, imageUrl && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["ToggleControl"]
       /* translators: visually stack buttons one on top of another */
       , {

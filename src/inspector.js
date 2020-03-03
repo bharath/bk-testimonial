@@ -69,7 +69,11 @@ class Inspector extends Component {
 			setAttributes,
 		} = this.props;
 
-		const { borderRadius, quoteImage, imageUrl, paddingSize, marginSize } = attributes;
+		const {
+			borderRadius,
+			quoteImage,
+			imageUrl,
+		} = attributes;
 
 		const updateSpacing = ( size, dimensionAttr ) => {
 			setAttributes( {
@@ -102,7 +106,10 @@ class Inspector extends Component {
 							) }
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Misc Settings', 'oleti' ) }>
+					<PanelBody
+						title={ __( 'Misc Settings', 'oleti' ) }
+						initialOpen={ false }
+					>
 						{ imageUrl && (
 							<ToggleControl
 								/* translators: visually stack buttons one on top of another */
