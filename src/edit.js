@@ -52,6 +52,8 @@ class BKTestimonialEdit extends Component {
 			size,
 			borderRadius,
 			quoteImage,
+			paddingSize,
+			marginSize
 		} = attributes;
 
 		const onChangeAlignment = ( newAlignment ) => {
@@ -90,6 +92,9 @@ class BKTestimonialEdit extends Component {
 			}
 		};
 
+		const hasPadding = !! attributes.paddingSize;
+		const hasMargin = !! attributes.marginSize;
+
 		const classes = classnames(
 			className,
 			`bk-testimonial has-text-align-${ alignment }`,
@@ -100,6 +105,10 @@ class BKTestimonialEdit extends Component {
 				[ textColor.class ]: textColor.class,
 				'has-border-radius': borderRadius,
 				'has-quote-image': quoteImage,
+				'has-padding': hasPadding,
+				'has-margin': hasMargin,
+				[ `padding-${ attributes.paddingSize }` ]: hasPadding,
+				[ `margin-${ attributes.marginSize }` ]: hasMargin,
 			}
 		);
 

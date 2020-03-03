@@ -61,6 +61,9 @@ export default function save( { className, attributes } ) {
 
 	const fontSizeClass = getFontSizeClass( fontSize );
 
+	const hasPadding = !! attributes.paddingSize;
+	const hasMargin = !! attributes.marginSize;
+
 	const classes = classnames(
 		className,
 		`bk-testimonial has-text-align-${ alignment }`,
@@ -72,6 +75,10 @@ export default function save( { className, attributes } ) {
 			[ fontSizeClass ]: fontSizeClass,
 			'has-border-radius': borderRadius,
 			'has-quote-image': quoteImage,
+			'has-padding': hasPadding,
+			'has-margin': hasMargin,
+			[ `padding-${ attributes.paddingSize }` ]: hasPadding,
+			[ `margin-${ attributes.marginSize }` ]: hasMargin,
 		}
 	);
 

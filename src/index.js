@@ -131,6 +131,20 @@ registerBlockType( 'oleti/bk-testimonial', {
 			type: 'boolean',
 			default: true,
 		},
+		paddingSize: {
+			type: 'string',
+		},
+		paddingUnit: {
+			type: 'string',
+			default: 'px',
+		},
+		marginSize: {
+			type: 'string',
+		},
+		marginUnit: {
+			type: 'string',
+			default: 'px',
+		},
 	},
 
 	/**
