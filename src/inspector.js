@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import { partialRight } from 'lodash';
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
@@ -17,6 +22,7 @@ import {
 	PanelBody,
 	withFallbackStyles,
 	ToggleControl,
+	__experimentalDimensionControl as DimensionControl,
 } from '@wordpress/components';
 
 const { getComputedStyle } = window;
@@ -63,11 +69,39 @@ class Inspector extends Component {
 			setAttributes,
 		} = this.props;
 
-		const { borderRadius, quoteImage, imageUrl } = attributes;
+		const { borderRadius, quoteImage, imageUrl, paddingSize, marginSize } = attributes;
+
+		const updateSpacing = ( size, dimensionAttr ) => {
+			setAttributes( {
+				[ dimensionAttr ]: size,
+			} );
+		};
 
 		return (
 			<Fragment>
 				<InspectorControls>
+					<PanelBody title={ __( 'Spacing' ) }>
+						<DimensionControl
+							label={ __( 'Padding' ) }
+							value={ attributes.paddingSize }
+							onChange={ partialRight(
+								updateSpacing,
+								'paddingSize'
+							) }
+							help={ __(
+								'Adjust spacing around content within the block.'
+							) }
+						/>
+
+						<DimensionControl
+							label={ __( 'Margin' ) }
+							value={ attributes.marginSize }
+							onChange={ partialRight( updateSpacing, 'marginSize' ) }
+							help={ __(
+								'Adjust spacing on the sides of the block.'
+							) }
+						/>
+					</PanelBody>
 					<PanelBody title={ __( 'Misc Settings', 'oleti' ) }>
 						{ imageUrl && (
 							<ToggleControl
