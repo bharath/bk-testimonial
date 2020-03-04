@@ -37,6 +37,12 @@ function oleti_bk_testimonial_block_init() {
 		$script_asset['version']
 	);
 
+	wp_set_script_translations(
+		'oleti-bk-testimonial-block-editor',
+		'oleti',
+		plugin_dir_path( __FILE__ ) . 'languages'
+	);
+
 	$editor_css = 'editor.css';
 	wp_register_style(
 		'oleti-bk-testimonial-block-editor',
