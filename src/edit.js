@@ -52,8 +52,6 @@ class BKTestimonialEdit extends Component {
 			size,
 			borderRadius,
 			quoteImage,
-			paddingSize,
-			marginSize
 		} = attributes;
 
 		const onChangeAlignment = ( newAlignment ) => {

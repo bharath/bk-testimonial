@@ -69,11 +69,7 @@ class Inspector extends Component {
 			setAttributes,
 		} = this.props;
 
-		const {
-			borderRadius,
-			quoteImage,
-			imageUrl,
-		} = attributes;
+		const { borderRadius, quoteImage, imageUrl } = attributes;
 
 		const updateSpacing = ( size, dimensionAttr ) => {
 			setAttributes( {
@@ -84,25 +80,30 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Spacing' ) }>
+					<PanelBody title={ __( 'Spacing', 'oleti' ) }>
 						<DimensionControl
-							label={ __( 'Padding' ) }
+							label={ __( 'Padding', 'oleti' ) }
 							value={ attributes.paddingSize }
 							onChange={ partialRight(
 								updateSpacing,
 								'paddingSize'
 							) }
 							help={ __(
-								'Adjust spacing around content within the block.'
+								'Adjust spacing around content within the block.',
+								'oleti'
 							) }
 						/>
 
 						<DimensionControl
-							label={ __( 'Margin' ) }
+							label={ __( 'Margin', 'oleti' ) }
 							value={ attributes.marginSize }
-							onChange={ partialRight( updateSpacing, 'marginSize' ) }
+							onChange={ partialRight(
+								updateSpacing,
+								'marginSize'
+							) }
 							help={ __(
-								'Adjust spacing on the sides of the block.'
+								'Adjust spacing on the sides of the block.',
+								'oleti'
 							) }
 						/>
 					</PanelBody>
