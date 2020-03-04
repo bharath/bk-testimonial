@@ -25,10 +25,6 @@ import {
 import Inspector from './inspector';
 
 class BKTestimonialEdit extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const {
 			attributes,
@@ -72,7 +68,8 @@ class BKTestimonialEdit extends Component {
 						/>
 					</figure>
 				);
-			} else {
+			}
+			if ( ! imageUrl ) {
 				return (
 					<div className="bk-testimonial__button">
 						<Button onClick={ openEvent }>
@@ -149,8 +146,10 @@ class BKTestimonialEdit extends Component {
 							className="bk-testimonial-quote"
 						/>
 						<RichText
-							onChange={ ( testimonialContent ) =>
-								setAttributes( { testimonialContent } )
+							onChange={ ( newTestimonialContent ) =>
+								setAttributes( {
+									testimonialContent: newTestimonialContent,
+								} )
 							}
 							value={ testimonialContent }
 							multiline="p"
@@ -163,8 +162,10 @@ class BKTestimonialEdit extends Component {
 						/>
 						<footer>
 							<RichText
-								onChange={ ( testimonialAuthor ) =>
-									setAttributes( { testimonialAuthor } )
+								onChange={ ( newTestimonialAuthor ) =>
+									setAttributes( {
+										testimonialAuthor: newTestimonialAuthor,
+									} )
 								}
 								value={ testimonialAuthor }
 								placeholder={ placeholder || __( 'Add Name' ) }
@@ -173,8 +174,10 @@ class BKTestimonialEdit extends Component {
 								tagName="cite"
 							/>
 							<RichText
-								onChange={ ( testimonialRole ) =>
-									setAttributes( { testimonialRole } )
+								onChange={ ( newTestimonialRole ) =>
+									setAttributes( {
+										testimonialRole: newTestimonialRole,
+									} )
 								}
 								value={ testimonialRole }
 								placeholder={

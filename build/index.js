@@ -493,7 +493,9 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
             onClick: openEvent,
             className: "bk-testimonial-image"
           }));
-        } else {
+        }
+
+        if (!imageUrl) {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("div", {
             className: "bk-testimonial__button"
           }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["Button"], {
@@ -552,9 +554,9 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
         size: dashiconSize,
         className: "bk-testimonial-quote"
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_11__["RichText"], {
-        onChange: function onChange(testimonialContent) {
+        onChange: function onChange(newTestimonialContent) {
           return setAttributes({
-            testimonialContent: testimonialContent
+            testimonialContent: newTestimonialContent
           });
         },
         value: testimonialContent,
@@ -564,9 +566,9 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
         className: "bk-testimonial-content",
         tagName: "div"
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("footer", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_11__["RichText"], {
-        onChange: function onChange(testimonialAuthor) {
+        onChange: function onChange(newTestimonialAuthor) {
           return setAttributes({
-            testimonialAuthor: testimonialAuthor
+            testimonialAuthor: newTestimonialAuthor
           });
         },
         value: testimonialAuthor,
@@ -575,9 +577,9 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
         className: "bk-testimonial-author",
         tagName: "cite"
       }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_11__["RichText"], {
-        onChange: function onChange(testimonialRole) {
+        onChange: function onChange(newTestimonialRole) {
           return setAttributes({
-            testimonialRole: testimonialRole
+            testimonialRole: newTestimonialRole
           });
         },
         value: testimonialRole,
