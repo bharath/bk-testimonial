@@ -902,20 +902,7 @@ var Inspector = /*#__PURE__*/function (_Component) {
       };
 
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_11__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["PanelBody"], {
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Spacing', 'oleti')
-      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["__experimentalDimensionControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Padding', 'oleti'),
-        value: attributes.paddingSize,
-        onChange: Object(lodash__WEBPACK_IMPORTED_MODULE_8__["partialRight"])(updateSpacing, 'paddingSize'),
-        help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Adjust spacing around content within the block.', 'oleti')
-      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["__experimentalDimensionControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Margin', 'oleti'),
-        value: attributes.marginSize,
-        onChange: Object(lodash__WEBPACK_IMPORTED_MODULE_8__["partialRight"])(updateSpacing, 'marginSize'),
-        help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Adjust spacing on the sides of the block.', 'oleti')
-      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["PanelBody"], {
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Misc Settings', 'oleti'),
-        initialOpen: false
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Misc Settings', 'oleti')
       }, imageUrl && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["ToggleControl"]
       /* translators: visually stack buttons one on top of another */
       , {
@@ -939,8 +926,21 @@ var Inspector = /*#__PURE__*/function (_Component) {
         },
         help: !!quoteImage ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Quote Image added by default. Toggle to remove it.', 'oleti') : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Toggle to add Quote Image.', 'oleti')
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["PanelBody"], {
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Font Settings', 'oleti'),
-        initialOpen: false,
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Spacing', 'oleti') //initialOpen={ false }
+
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["__experimentalDimensionControl"], {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Padding', 'oleti'),
+        value: attributes.paddingSize,
+        onChange: Object(lodash__WEBPACK_IMPORTED_MODULE_8__["partialRight"])(updateSpacing, 'paddingSize'),
+        help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Adjust spacing around content within the block.', 'oleti')
+      }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["__experimentalDimensionControl"], {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Margin', 'oleti'),
+        value: attributes.marginSize,
+        onChange: Object(lodash__WEBPACK_IMPORTED_MODULE_8__["partialRight"])(updateSpacing, 'marginSize'),
+        help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Adjust spacing on the sides of the block.', 'oleti')
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_12__["PanelBody"], {
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Font Settings', 'oleti') //initialOpen={ false }
+        ,
         className: "blocks-font-size"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_11__["FontSizePicker"], {
         label: 'test',
@@ -948,8 +948,8 @@ var Inspector = /*#__PURE__*/function (_Component) {
         value: fontSize.size,
         onChange: setFontSize
       })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_11__["PanelColorSettings"], {
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Color Settings', 'oleti'),
-        initialOpen: false,
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_9__["__"])('Color Settings', 'oleti') //initialOpen={ false }
+        ,
         colorSettings: [{
           value: backgroundColor.color,
           onChange: setBackgroundColor,

@@ -80,36 +80,8 @@ class Inspector extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Spacing', 'oleti' ) }>
-						<DimensionControl
-							label={ __( 'Padding', 'oleti' ) }
-							value={ attributes.paddingSize }
-							onChange={ partialRight(
-								updateSpacing,
-								'paddingSize'
-							) }
-							help={ __(
-								'Adjust spacing around content within the block.',
-								'oleti'
-							) }
-						/>
-
-						<DimensionControl
-							label={ __( 'Margin', 'oleti' ) }
-							value={ attributes.marginSize }
-							onChange={ partialRight(
-								updateSpacing,
-								'marginSize'
-							) }
-							help={ __(
-								'Adjust spacing on the sides of the block.',
-								'oleti'
-							) }
-						/>
-					</PanelBody>
 					<PanelBody
 						title={ __( 'Misc Settings', 'oleti' ) }
-						initialOpen={ false }
 					>
 						{ imageUrl && (
 							<ToggleControl
@@ -157,8 +129,38 @@ class Inspector extends Component {
 						/>
 					</PanelBody>
 					<PanelBody
+						title={ __( 'Spacing', 'oleti' ) }
+						//initialOpen={ false }
+					>
+						<DimensionControl
+							label={ __( 'Padding', 'oleti' ) }
+							value={ attributes.paddingSize }
+							onChange={ partialRight(
+								updateSpacing,
+								'paddingSize'
+							) }
+							help={ __(
+								'Adjust spacing around content within the block.',
+								'oleti'
+							) }
+						/>
+
+						<DimensionControl
+							label={ __( 'Margin', 'oleti' ) }
+							value={ attributes.marginSize }
+							onChange={ partialRight(
+								updateSpacing,
+								'marginSize'
+							) }
+							help={ __(
+								'Adjust spacing on the sides of the block.',
+								'oleti'
+							) }
+						/>
+					</PanelBody>
+					<PanelBody
 						title={ __( 'Font Settings', 'oleti' ) }
-						initialOpen={ false }
+						//initialOpen={ false }
 						className="blocks-font-size"
 					>
 						<FontSizePicker
@@ -170,7 +172,7 @@ class Inspector extends Component {
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( 'Color Settings', 'oleti' ) }
-						initialOpen={ false }
+						//initialOpen={ false }
 						colorSettings={ [
 							{
 								value: backgroundColor.color,
