@@ -477,12 +477,6 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
           borderRadius = attributes.borderRadius,
           quoteImage = attributes.quoteImage;
 
-      var onChangeAlignment = function onChangeAlignment(newAlignment) {
-        setAttributes({
-          alignment: newAlignment === undefined ? 'none' : newAlignment
-        });
-      };
-
       var getImageButton = function getImageButton(openEvent) {
         if (imageUrl) {
           return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("figure", {
@@ -513,6 +507,12 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
             d: "M480 344H32l86.3-164.2 21.7 11.3 49-77.3 100 113.1 8.9-9.3 17.1 22.3 26-46.4 52.9 71.2 15.1-15.9z"
           }))));
         }
+      };
+
+      var onChangeAlignment = function onChangeAlignment(newAlignment) {
+        setAttributes({
+          alignment: newAlignment === undefined ? 'none' : newAlignment
+        });
       };
 
       var hasPadding = !!attributes.paddingSize;

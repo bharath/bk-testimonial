@@ -50,12 +50,6 @@ class BKTestimonialEdit extends Component {
 			quoteImage,
 		} = attributes;
 
-		const onChangeAlignment = ( newAlignment ) => {
-			setAttributes( {
-				alignment: newAlignment === undefined ? 'none' : newAlignment,
-			} );
-		};
-
 		const getImageButton = ( openEvent ) => {
 			if ( imageUrl ) {
 				return (
@@ -87,7 +81,14 @@ class BKTestimonialEdit extends Component {
 			}
 		};
 
+		const onChangeAlignment = ( newAlignment ) => {
+			setAttributes( {
+				alignment: newAlignment === undefined ? 'none' : newAlignment,
+			} );
+		};
+
 		const hasPadding = !! attributes.paddingSize;
+
 		const hasMargin = !! attributes.marginSize;
 
 		const classes = classnames(
