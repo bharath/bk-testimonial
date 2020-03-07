@@ -19,11 +19,6 @@
 	padding: 30px;
 }
 
-.bk-testimonial:not(.has-background-color) {
-	background-color: #000;
-	color: #fff;
-}
-
 .bk-testimonial__button button {
 	width: 75px;
 	height: 75px;

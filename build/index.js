@@ -713,12 +713,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('ole
       default: 'none'
     },
     backgroundColor: {
-      type: 'string',
-      default: '#000000'
+      type: 'string'
     },
     textColor: {
-      type: 'string',
-      default: '#ffffff'
+      type: 'string'
     },
     customBackgroundColor: {
       type: 'string'

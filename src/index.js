@@ -105,11 +105,9 @@ registerBlockType( 'oleti/bk-testimonial', {
 		},
 		backgroundColor: {
 			type: 'string',
-			default: '#000000',
 		},
 		textColor: {
 			type: 'string',
-			default: '#ffffff',
 		},
 		customBackgroundColor: {
 			type: 'string',
