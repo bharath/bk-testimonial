@@ -239,42 +239,43 @@
 	-ms-grid-row-align: center;
 	align-self: center;
 }
-.padding-none {
+
+.wp-block-oleti-bk-testimonial.padding-none {
 	padding: 0;
 }
 
-.padding-small {
+.wp-block-oleti-bk-testimonial.padding-small {
 	padding: 14px;
 }
 
-.padding-medium {
+.wp-block-oleti-bk-testimonial.padding-medium {
 	padding: 28px;
 }
 
-.padding-large {
+.wp-block-oleti-bk-testimonial.padding-large {
 	padding: 42px;
 }
 
-.padding-xlarge {
+.wp-block-oleti-bk-testimonial.padding-xlarge {
 	padding: 56px;
 }
 
-.margin-none {
+.wp-block-oleti-bk-testimonial.margin-none {
 	margin: 0;
 }
 
-.margin-small {
+.wp-block-oleti-bk-testimonial.margin-small {
 	margin: 14px;
 }
 
-.margin-medium {
+.wp-block-oleti-bk-testimonial.margin-medium {
 	margin: 28px;
 }
 
-.margin-large {
+.wp-block-oleti-bk-testimonial.margin-large {
 	margin: 42px;
 }
 
-.margin-xlarge {
+.wp-block-oleti-bk-testimonial.margin-xlarge {
 	margin: 56px;
 }
