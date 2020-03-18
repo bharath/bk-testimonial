@@ -15,10 +15,14 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"start": "wp-scripts start",
-		"packages-update": "wp-scripts packages-update"
+		"packages-update": "wp-scripts packages-update",
+		"i18n": "npm run i18n-pot && npm run i18n-json && npm run i18n-mo",
+		"i18n-pot": "wp i18n make-pot ./ languages/section.pot && cp ./languages/section.pot ./languages/section-en_US.po",
+		"i18n-json": "wp i18n make-json languages/",
+		"i18n-mo": "for file in `find . -name \"*.po\"` ; do msgfmt -o ${file/.po/.mo} $file ; done"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^7.1.2",
+		"@wordpress/scripts": "^7.1.3",
 		"classnames": "^2.2.6"
 	}
 }
