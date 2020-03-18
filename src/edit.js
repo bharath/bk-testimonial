@@ -155,7 +155,7 @@ class BKTestimonialEdit extends Component {
 							value={ testimonialContent }
 							multiline="p"
 							placeholder={
-								placeholder || __( 'Add Testimonial Content…' )
+								placeholder || __( 'Add Testimonial Content…', 'oleti' )
 							}
 							keepPlaceholderOnFocus
 							className="bk-testimonial-content"
@@ -169,7 +169,7 @@ class BKTestimonialEdit extends Component {
 									} )
 								}
 								value={ testimonialAuthor }
-								placeholder={ placeholder || __( 'Add Name' ) }
+								placeholder={ placeholder || __( 'Add Name' 'oleti'  ) }
 								keepPlaceholderOnFocus
 								className="bk-testimonial-author"
 								tagName="cite"
@@ -182,7 +182,7 @@ class BKTestimonialEdit extends Component {
 								}
 								value={ testimonialRole }
 								placeholder={
-									placeholder || __( 'Add Role, Company' )
+									placeholder || __( 'Add Role, oleti' )
 								}
 								keepPlaceholderOnFocus
 								className="bk-testimonial-role"
