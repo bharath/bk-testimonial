@@ -561,7 +561,7 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
         },
         value: testimonialContent,
         multiline: "p",
-        placeholder: placeholder || Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Add Testimonial Content…'),
+        placeholder: placeholder || Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Add Testimonial Content…', 'oleti'),
         keepPlaceholderOnFocus: true,
         className: "bk-testimonial-content",
         tagName: "div"
@@ -572,7 +572,7 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
           });
         },
         value: testimonialAuthor,
-        placeholder: placeholder || Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Add Name'),
+        placeholder: placeholder || Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Add Name', 'oleti'),
         keepPlaceholderOnFocus: true,
         className: "bk-testimonial-author",
         tagName: "cite"
@@ -583,7 +583,7 @@ var BKTestimonialEdit = /*#__PURE__*/function (_Component) {
           });
         },
         value: testimonialRole,
-        placeholder: placeholder || Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Add Role, Company'),
+        placeholder: placeholder || Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Add Role, oleti'),
         keepPlaceholderOnFocus: true,
         className: "bk-testimonial-role",
         tagName: "small"
